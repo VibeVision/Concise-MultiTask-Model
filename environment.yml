@@ -14,4 +14,11 @@ dependencies:
   - intel-openmp=2021.3.0=h06a4308_3350
   - jpeg=9b=h024ee3a_2
   - lcms2=2.12=h3be6417_0
-  - libedi
+  - libedit=3.1.20210216=h27cfd23_1
+  - libffi=3.2.1=hf484d3e_1007
+  - libgcc-ng=9.3.0=h5101ec6_17
+  - libgomp=9.3.0=h5101ec6_17
+  - libpng=1.6.37=hbc83047_0
+  - libstdcxx-ng=9.3.0=hd4cf53a_17
+  - libtiff=4.2.0=h85742a9_0
+  - libuv=1.40.0=h7b644
