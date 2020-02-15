@@ -1,0 +1,10 @@
+name: gr-mtl-environment
+channels:
+  - pytorch
+  - defaults
+dependencies:
+  - _libgcc_mutex=0.1=main
+  - _openmp_mutex=4.5=1_gnu
+  - blas=1.0=mkl
+  - ca-certificates=2021.7.5=h06a4308_1
+  - certifi=2021
