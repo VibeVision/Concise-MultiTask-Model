@@ -7,4 +7,11 @@ dependencies:
   - _openmp_mutex=4.5=1_gnu
   - blas=1.0=mkl
   - ca-certificates=2021.7.5=h06a4308_1
-  - certifi=2021
+  - certifi=2021.5.30=py36h06a4308_0
+  - cudatoolkit=10.2.89=hfd86e86_1
+  - dataclasses=0.8=pyh4f3eec9_6
+  - freetype=2.10.4=h5ab3b9f_0
+  - intel-openmp=2021.3.0=h06a4308_3350
+  - jpeg=9b=h024ee3a_2
+  - lcms2=2.12=h3be6417_0
+  - libedi
