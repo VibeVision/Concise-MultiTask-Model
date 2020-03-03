@@ -44,4 +44,12 @@ dependencies:
   - six=1.16.0=pyhd3eb1b0_0
   - sqlite=3.33.0=h62c20be_0
   - tk=8.6.10=hbc83047_0
-  - torchaudio=
+  - torchaudio=0.7.2=py36
+  - torchvision=0.8.2=py36_cu102
+  - typing_extensions=3.10.0.0=pyh06a4308_0
+  - wheel=0.37.0=pyhd3eb1b0_0
+  - xz=5.2.5=h7b6447c_0
+  - zlib=1.2.11=h7b6447c_3
+  - zstd=1.4.9=haebb681_0
+  - pip:
+    - 
