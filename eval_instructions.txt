@@ -4,4 +4,10 @@
 
 
 1. git clone https://github.com/lalithjets/Global-reasoned-multi-task-model.git
-2. cd G
+2. cd Global-reasoned-multi-task-model/
+
+
+# ------------------------- Download Commands ------------------------- #
+
+# ------------------------- Checkpoints ------------------------- #
+Link : https://drive.google.com/file/d/1HTSY
