@@ -25,3 +25,9 @@ Command : (GDrive wget download - Optional) - Can be downloaded manually and pla
 > 6. wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1OwWfgBZE0W5grXVaQN63VUUaTvufEmW0' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1OwWfgBZE0W5grXVaQN63VUUaTvufEmW0" -O gr_mtl_ssu_dataset.zip && rm -rf /tmp/cookies.txt
 
 7. unzip gr_mtl_ssu_dataset.zip
+8. rm gr_mtl_ssu_dataset.zip
+
+9. Set the model_type, ver, seg_mode and checkpoint_dir in evaluation.py as given in instructions
+
+# ------------------------- Run the command for Evaluation ------------------------- #
+10. 
