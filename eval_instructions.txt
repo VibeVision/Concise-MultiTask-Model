@@ -30,4 +30,12 @@ Command : (GDrive wget download - Optional) - Can be downloaded manually and pla
 9. Set the model_type, ver, seg_mode and checkpoint_dir in evaluation.py as given in instructions
 
 # ------------------------- Run the command for Evaluation ------------------------- #
-10. 
+10. CUDA_VISIBLE_DEVICES=1 python3 evaluation.py
+
+
+# --------------------------------------------- Sample Output --------------------------------------------- #
+
+Settings : 
+
+    model_type = 'amtl-t0'
+    ver = 'am
