@@ -38,4 +38,9 @@ Command : (GDrive wget download - Optional) - Can be downloaded manually and pla
 Settings : 
 
     model_type = 'amtl-t0'
-    ver = 'am
+    ver = 'amtl_t0_sv1'
+    seg_mode = 'v1'
+    checkpoint_dir = 'amtl_t0_sv1'
+
+# ------------------------------------------------------------------------------------------------#
+                                       
