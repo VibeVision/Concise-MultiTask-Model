@@ -59,4 +59,11 @@ Mean Value:  0.435358693711956
 | Bipolar_Forceps           | 0.696591   |
 | Prograsp_Forceps          | 0.435617   |
 | Large_Needle_Driver       | 0.00154275 |
-| Mon
+| Monopolar_Curved_Scissors | 0.871583   |
+| Ultrasound_Probe          | 0.120284   |
+| Suction_Instrument        | 0.347132   |
+| Clip_Applier              | 0.0386921  |
+
+
+
+# ------------------------------------------
