@@ -78,4 +78,13 @@ Mean Value:  0.435358693711956
 │   ├── amtl_t0_sv2gc
 │   │   └── best_epoch.pth
 │   ├── amtl_t3g_sv1
-│   │   └── bes
+│   │   └── best_epoch.pth
+│   ├── amtl_t3pn_sv1
+│   │   └── best_epoch.pth
+│   ├── mtl_kd_t0_s
+│   │   └── best_epoch.pth
+│   ├── mtl_kd_t0_sv1
+│   │   └── best_epoch.pth
+│   ├── mtl_kd_t1_sv1
+│   │   └── best_epoch.pth
+│   ├── mtl_kd_t3g_sv1
