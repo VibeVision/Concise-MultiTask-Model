@@ -88,3 +88,13 @@ Mean Value:  0.435358693711956
 │   ├── mtl_kd_t1_sv1
 │   │   └── best_epoch.pth
 │   ├── mtl_kd_t3g_sv1
+│   │   └── best_epoch.pth
+│   ├── stl_s
+│   │   └── best_epoch.pth
+│   ├── stl_sg
+│   │   └── best_epoch.pth
+│   ├── stl_s_ng
+│   │   └── best_epoch.pth
+│   ├── stl_s_v1
+│   │   └── best_epoch.pth
+│   └── stl_s_
