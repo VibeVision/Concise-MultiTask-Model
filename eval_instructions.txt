@@ -97,4 +97,14 @@ Mean Value:  0.435358693711956
 │   │   └── best_epoch.pth
 │   ├── stl_s_v1
 │   │   └── best_epoch.pth
-│   └── stl_s_
+│   └── stl_s_v2gc
+│       └── best_epoch.pth
+├── dataset
+│   ├── labels_isi_dataset.json
+│   ├── seq_1
+│   │   ├── annotations
+│   │   │   ├── frame000.png
+│   │   │   ├── ...
+│   │   ├── left_frames
+│   │   │   ├── frame000.png
+│  
