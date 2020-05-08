@@ -116,4 +116,13 @@ Mean Value:  0.435358693711956
 │   │       ├── frame000.xml
 │   │       ├── ...
 │   ├── seq_16
-│   │   ├── a
+│   │   ├── annotations
+│   │   │   ├── frame000.png
+│   │   │   ├── ...
+│   │   ├── left_frames
+│   │   │   ├── frame000.png
+│   │   │   ├── ...
+│   │   ├── vsgat
+│   │   │   └── features
+│   │   │       ├── frame000_features.hdf5
+│   
