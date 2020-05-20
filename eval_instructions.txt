@@ -143,4 +143,13 @@ Mean Value:  0.435358693711956
 │   │   └── xml
 │   │       ├── frame000.xml
 │   │       ├── ...    
-│   └── surgicalsce
+│   └── surgicalscene_word2vec.hdf5
+├── environment.yml
+├── evaluation.py
+├── eval_instructions.txt
+├── figures
+│   ├── figure_1.pdf
+│   ├── figure_2.pdf
+│   ├── figure_3.pdf
+│   ├── figure_4.pdf
+│   └── figure
