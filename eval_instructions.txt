@@ -152,4 +152,12 @@ Mean Value:  0.435358693711956
 │   ├── figure_2.pdf
 │   ├── figure_3.pdf
 │   ├── figure_4.pdf
-│   └── figure
+│   └── figure_5.pdf
+├── models
+│   ├── mtl_model.py
+│   ├── __pycache__
+│   │   ├── mtl_model.cpython-36.pyc
+│   │   ├── scene_graph.cpython-36.pyc
+│   │   ├── segmentation_model.cpython-36.pyc
+│   │   └── surgicalDataset.cpython-36.pyc
+│   ├── sc
