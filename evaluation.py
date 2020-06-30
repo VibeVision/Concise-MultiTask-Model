@@ -25,4 +25,16 @@ from tabulate import tabulate
 
 import torch.multiprocessing as mp
 import torch.distributed as dist
-from torch.nn.parallel import Distr
+from torch.nn.parallel import DistributedDataParallel as DDP
+
+import warnings
+warnings.filterwarnings('ignore')
+
+def label_to_index(lbl):
+    '''
+    Label to index mapping
+    Input: class label
+    Output: class index
+    '''
+    return torch.tensor(map_dict.index(lbl))
+
