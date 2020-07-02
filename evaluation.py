@@ -58,4 +58,11 @@ def seed_everything(seed=27):
     torch.cuda.manual_seed_all(seed)
     os.environ['PYTHONHASHSEED'] = str(seed)
     torch.backends.cudnn.deterministic = True
-    torc
+    torch.backends.cudnn.benchmark = False
+
+
+def seg_eval_batch(seg_output, target):
+    '''
+    Calculate segmentation loss, pixel acc and IoU
+    '''
+    seg_criterion = SegmentationLosses(se_loss=False, aux=False, nclass=8, se_wei
