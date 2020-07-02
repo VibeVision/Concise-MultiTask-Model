@@ -51,4 +51,11 @@ def index_to_label(index):
 
 def seed_everything(seed=27):
     '''
-    Set random seed for reproducibl
+    Set random seed for reproducible experiments
+    Inputs: seed number 
+    '''
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
+    os.environ['PYTHONHASHSEED'] = str(seed)
+    torch.backends.cudnn.deterministic = True
+    torc
