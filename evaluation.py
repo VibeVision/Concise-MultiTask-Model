@@ -38,3 +38,17 @@ def label_to_index(lbl):
     '''
     return torch.tensor(map_dict.index(lbl))
 
+
+def index_to_label(index):
+    '''
+    Index to label mapping
+    Input: class index
+    Output: class label
+    '''
+    return map_dict[index]
+
+
+
+def seed_everything(seed=27):
+    '''
+    Set random seed for reproducibl
