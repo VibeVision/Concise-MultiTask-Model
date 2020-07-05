@@ -68,4 +68,17 @@ def seg_eval_batch(seg_output, target):
     seg_criterion = SegmentationLosses(se_loss=False, aux=False, nclass=8, se_weight=0.2, aux_weight=0.2)
     loss = seg_criterion(seg_output, target)
     correct, labeled = batch_pix_accuracy(seg_output.data, target)
-    inter, union = batch_intersection_union(seg_output.data, target, 8)  # 8 is 
+    inter, union = batch_intersection_union(seg_output.data, target, 8)  # 8 is num classes
+    return correct, labeled, inter, union, loss
+
+
+def build_model(args):
+    '''
+    Build MTL model
+    1) Scene Graph Understanding Model
+    2) Segmentation Model : Encoder, Reasoning unit, Decoder
+
+    Inputs: args
+    '''
+
+    ''
