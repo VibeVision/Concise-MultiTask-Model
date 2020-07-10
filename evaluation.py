@@ -103,4 +103,11 @@ def model_eval(model, validation_dataloader, nclass=8):
     class_values = np.zeros(nclass)
 
     # graph
-    scene
+    scene_graph_criterion = nn.MultiLabelSoftMarginLoss()
+    scene_graph_edge_count = 0
+    scene_graph_total_acc = 0.0
+    scene_graph_total_loss = 0.0
+    scene_graph_logits_list = []
+    scene_graph_labels_list = []
+
+    test_seg_los
