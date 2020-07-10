@@ -110,4 +110,12 @@ def model_eval(model, validation_dataloader, nclass=8):
     scene_graph_logits_list = []
     scene_graph_labels_list = []
 
-    test_seg_los
+    test_seg_loss = 0.0
+    total_inter, total_union, total_correct, total_label = 0, 0, 0, 0
+    
+    
+    for data in tqdm(validation_dataloader):
+        seg_img = data['img']
+        seg_masks = data['mask']
+        img_loc = data['img_loc']
+        node_num = data
