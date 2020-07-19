@@ -125,4 +125,5 @@ def model_eval(model, validation_dataloader, nclass=8):
         spatial_feat = data['spatial_feat']
         word2vec = data['word2vec']
         
-        spatia
+        spatial_feat, word2vec, edge_labels = spatial_feat.cuda(non_blocking=True), word2vec.cuda(non_blocking=True), edge_labels.cuda(non_blocking=True)
+        seg_img, seg_masks = seg_img.cuda(non_blocking=True), seg_masks.cuda(non_bloc
