@@ -126,4 +126,9 @@ def model_eval(model, validation_dataloader, nclass=8):
         word2vec = data['word2vec']
         
         spatial_feat, word2vec, edge_labels = spatial_feat.cuda(non_blocking=True), word2vec.cuda(non_blocking=True), edge_labels.cuda(non_blocking=True)
-        seg_img, seg_masks = seg_img.cuda(non_blocking=True), seg_masks.cuda(non_bloc
+        seg_img, seg_masks = seg_img.cuda(non_blocking=True), seg_masks.cuda(non_blocking=True)
+
+        with torch.no_grad():
+            interaction, seg_outputs, _ = model(seg_img, img_loc, det_boxes, node_num, spatial_feat, word2vec, roi_labels, validation=True)
+
+        scene_graph_logits_list.append(inter
