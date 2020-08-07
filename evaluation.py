@@ -131,4 +131,9 @@ def model_eval(model, validation_dataloader, nclass=8):
         with torch.no_grad():
             interaction, seg_outputs, _ = model(seg_img, img_loc, det_boxes, node_num, spatial_feat, word2vec, roi_labels, validation=True)
 
-        scene_graph_logits_list.append(inter
+        scene_graph_logits_list.append(interaction)
+        scene_graph_labels_list.append(edge_labels)
+
+        # loss and accuracy
+        scene_graph_loss = scene_graph_criterion(interaction, edge_labels.float())
+        scene_graph_acc = np.sum(np.equal(np.argmax
