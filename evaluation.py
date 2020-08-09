@@ -136,4 +136,7 @@ def model_eval(model, validation_dataloader, nclass=8):
 
         # loss and accuracy
         scene_graph_loss = scene_graph_criterion(interaction, edge_labels.float())
-        scene_graph_acc = np.sum(np.equal(np.argmax
+        scene_graph_acc = np.sum(np.equal(np.argmax(interaction.cpu().data.numpy(), axis=-1), np.argmax(edge_labels.cpu().data.numpy(), axis=-1)))
+        correct, labeled, inter, union, t_loss = seg_eval_batch(seg_outputs, seg_masks)
+
+        # accu
