@@ -142,4 +142,12 @@ def model_eval(model, validation_dataloader, nclass=8):
         # accumulate scene graph loss and acc
         scene_graph_total_loss += scene_graph_loss.item() * edge_labels.shape[0]
         scene_graph_total_acc += scene_graph_acc
-        scene_graph_edge_count += e
+        scene_graph_edge_count += edge_labels.shape[0]
+
+        total_correct += correct
+        total_label += labeled
+        total_inter += inter
+        total_union += union
+        test_seg_loss += t_loss.item()
+
+    # graph evaluatio
