@@ -150,4 +150,7 @@ def model_eval(model, validation_dataloader, nclass=8):
         total_union += union
         test_seg_loss += t_loss.item()
 
-    # graph evaluatio
+    # graph evaluation
+    scene_graph_total_acc = scene_graph_total_acc / scene_graph_edge_count
+    scene_graph_total_loss = scene_graph_total_loss / len(validation_dataloader)
+    scene_graph_logits_all = torch.cat(scene_graph_logits_list).
