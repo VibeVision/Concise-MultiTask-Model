@@ -153,4 +153,7 @@ def model_eval(model, validation_dataloader, nclass=8):
     # graph evaluation
     scene_graph_total_acc = scene_graph_total_acc / scene_graph_edge_count
     scene_graph_total_loss = scene_graph_total_loss / len(validation_dataloader)
-    scene_graph_logits_all = torch.cat(scene_graph_logits_list).
+    scene_graph_logits_all = torch.cat(scene_graph_logits_list).cuda()
+    scene_graph_labels_all = torch.cat(scene_graph_labels_list).cuda()
+    scene_graph_logits_all = F.softmax(scene_graph_logits_all, dim=1)
+    scene_graph_map_value, scene_graph_recall = calibration_metrics(scene_gra
