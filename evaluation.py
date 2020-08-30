@@ -162,4 +162,7 @@ def model_eval(model, validation_dataloader, nclass=8):
     pixAcc = 1.0 * total_correct / (np.spacing(1) + total_label)
     IoU = 1.0 * total_inter / (np.spacing(1) + total_union)
     class_values += IoU
-    mIoU = 
+    mIoU = IoU.mean()
+
+    print('\n================= Evaluation ====================')
+    print('Graph        :  acc: %0.4f  map: %0.4f recall: %0.4f  loss: %0.4f}' % (scene_graph_total_acc, scene_graph_map_value, scene_graph_recall, sce
