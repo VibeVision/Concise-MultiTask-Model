@@ -177,4 +177,12 @@ def model_eval(model, validation_dataloader, nclass=8):
         m_vals.append(value)
         class_wise_IoU.append(pair)
 
-    print("Mean Value: "
+    print("Mean Value: ", np.mean(np.array(m_vals)), "\n")
+
+    print(tabulate(class_wise_IoU,
+          headers=['Class', 'IoU'], tablefmt='orgtbl'))
+
+    return(scene_graph_total_acc, scene_graph_map_value, mIoU)
+
+
+if __name__ == "__m
