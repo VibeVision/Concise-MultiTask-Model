@@ -168,4 +168,13 @@ def model_eval(model, validation_dataloader, nclass=8):
     print('Graph        :  acc: %0.4f  map: %0.4f recall: %0.4f  loss: %0.4f}' % (scene_graph_total_acc, scene_graph_map_value, scene_graph_recall, scene_graph_total_loss))
     print('Segmentation : Pacc: %0.4f mIoU: %0.4f   loss: %0.4f}' % (pixAcc, mIoU, test_seg_loss/len(validation_dataloader)))
 
-    print('\n================= Class-wise IoU ==================
+    print('\n================= Class-wise IoU ====================')
+    class_wise_IoU = []
+    m_vals = []
+    for idx, value in enumerate(class_values):
+        class_name = index_to_label(idx)
+        pair = [class_name, value]
+        m_vals.append(value)
+        class_wise_IoU.append(pair)
+
+    print("Mean Value: "
