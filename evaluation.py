@@ -185,4 +185,12 @@ def model_eval(model, validation_dataloader, nclass=8):
     return(scene_graph_total_acc, scene_graph_map_value, mIoU)
 
 
-if __name__ == "__m
+if __name__ == "__main__":
+
+    '''
+    Main function to set arguments
+    '''
+
+    '''
+    To reproduce the results, set the model_type, ver, seg_mode and checkpoint_dir based on the table below
+    TBR = To be rele
