@@ -193,4 +193,7 @@ if __name__ == "__main__":
 
     '''
     To reproduce the results, set the model_type, ver, seg_mode and checkpoint_dir based on the table below
-    TBR = To be rele
+    TBR = To be released
+    ============================================================================================================
+    Paper_name              |   model_type     |        ver           |    seg_mode    |   checkpoint_dir
+    =
