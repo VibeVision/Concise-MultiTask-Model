@@ -202,4 +202,7 @@ if __name__ == "__main__":
     VS-GAT                  |    'stl-sg'      |    'stl_sg'          |      None      |    'stl_sg'
     SEG                     |    'stl-s'       |    'stl_s_ng'        |      TBR       |    'stl_s_ng'
     SEG-GR                  |    'stl-s'       |    'stl_s'           |      None      |    'stl_s'
-    SEG-MSGR                |    'stl-s'       |    'stl_s_v2gc'      |     'v2gc'     |    's
+    SEG-MSGR                |    'stl-s'       |    'stl_s_v2gc'      |     'v2gc'     |    'stl_s_v2gc'
+    SEG-MSLRGR              |    'stl-s'       |    'stl_s_v1'        |     'v1'       |    'stl_s_v1'
+    ------------------------------------------------------------------------------------------------------------
+      
