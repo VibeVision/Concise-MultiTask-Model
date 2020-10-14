@@ -200,4 +200,6 @@ if __name__ == "__main__":
                                                         STL
     ------------------------|-----------------------------------------------------------------------------------
     VS-GAT                  |    'stl-sg'      |    'stl_sg'          |      None      |    'stl_sg'
-    SEG                     |    'stl-s'       |  
+    SEG                     |    'stl-s'       |    'stl_s_ng'        |      TBR       |    'stl_s_ng'
+    SEG-GR                  |    'stl-s'       |    'stl_s'           |      None      |    'stl_s'
+    SEG-MSGR                |    'stl-s'       |    'stl_s_v2gc'      |     'v2gc'     |    's
