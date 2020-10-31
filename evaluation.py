@@ -220,4 +220,6 @@ if __name__ == "__main__":
     ------------------------------------------------------------------------------------------------------------
     KD-MTL-GR               |    'mtl-t0'      |    'mtl_kd_t0_s'     |      None      |        TBR
     KD-MTL-MSLRGR           |    'mtl-t0'      |    'mtl_kd_t0_sv1'   |      'v1'      |    'mtl_kd_t0_sv1'
-    KD-MTL-MSLRGR-SGFSEG    |   
+    KD-MTL-MSLRGR-SGFSEG    |    'mtl-t1'      |    'mtl_kd_t1_sv1'   |      'v1'      |    'mtl_kd_t1_sv1'
+    KD-MTL-MSLRGR-GISFSG    |    'mtl-t3'      |    'mtl_kd_t3_sv1'   |      'v1'      |    'mtl_kd_t3_sv1'
+    -----------------------
