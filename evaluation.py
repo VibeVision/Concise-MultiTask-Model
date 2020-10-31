@@ -222,4 +222,14 @@ if __name__ == "__main__":
     KD-MTL-MSLRGR           |    'mtl-t0'      |    'mtl_kd_t0_sv1'   |      'v1'      |    'mtl_kd_t0_sv1'
     KD-MTL-MSLRGR-SGFSEG    |    'mtl-t1'      |    'mtl_kd_t1_sv1'   |      'v1'      |    'mtl_kd_t1_sv1'
     KD-MTL-MSLRGR-GISFSG    |    'mtl-t3'      |    'mtl_kd_t3_sv1'   |      'v1'      |    'mtl_kd_t3_sv1'
-    -----------------------
+    ------------------------------------------------------------------------------------------------------------
+    '''
+
+    model_type = 'amtl-t3'
+    ver = 'amtl_t3_sv1'
+    seg_mode = 'v1'
+    checkpoint_dir = 'amtl_t3_sv1'
+
+    port = '8892'
+
+  
