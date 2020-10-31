@@ -232,4 +232,12 @@ if __name__ == "__main__":
 
     port = '8892'
 
-  
+    # Set random seed
+    seed_everything()  
+    print(ver, seg_mode)
+
+    # arguments
+    parser = argparse.ArgumentParser(description='GR_MTL_SSU')
+
+    # hyper parameters
+    parser.add_argument('--lr',          
