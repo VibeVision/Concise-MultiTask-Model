@@ -240,4 +240,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='GR_MTL_SSU')
 
     # hyper parameters
-    parser.add_argument('--lr',          
+    parser.add_argument('--lr',                 type=float,     default = 0.00001) #0.00001
+    parser.add_argument('--epoch',              type=int,       default = 130)
+    parser.add_argument('--start_epoch',        type=int,       default = 0)
+    pa
