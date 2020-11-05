@@ -250,4 +250,7 @@ if __name__ == "__main__":
 
     # file locations
     parser.add_argument('--log_dir',            type=str,       default = './log/' + ver)
-    parser.add_argument('--save
+    parser.add_argument('--save_dir',           type=str,       default = './checkpoints/' + ver)
+    parser.add_argument('--output_img_dir',     type=str,       default = './results/' + ver)
+    parser.add_argument('--save_every',         type=int,       default = 10)
+    pa
