@@ -243,4 +243,6 @@ if __name__ == "__main__":
     parser.add_argument('--lr',                 type=float,     default = 0.00001) #0.00001
     parser.add_argument('--epoch',              type=int,       default = 130)
     parser.add_argument('--start_epoch',        type=int,       default = 0)
-    pa
+    parser.add_argument('--batch_size',         type=int,       default = 1)
+    parser.add_argument('--gpu',                type=bool,      default = True)
+    parser.add_argument('--train_model',        type=str,       default = 'epoc
