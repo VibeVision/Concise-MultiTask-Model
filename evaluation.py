@@ -260,4 +260,7 @@ if __name__ == "__main__":
     parser.add_argument('--bn',                 type=bool,      default = False)
     parser.add_argument('--drop_prob',          type=float,     default = 0.3)
     parser.add_argument('--bias',               type=bool,      default = True)
-    parser.add_arg
+    parser.add_argument('--multi_attn',         type=bool,      default = False)
+    parser.add_argument('--diff_edge',          type=bool,      default = False)
+    if model_type == 'mtl-t3' or model_type == 'amtl-t3':
+        pars
