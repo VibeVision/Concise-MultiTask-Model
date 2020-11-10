@@ -270,4 +270,10 @@ if __name__ == "__main__":
     parser.add_argument('--sampler',            type=int,       default = 0)
     parser.add_argument('--data_aug',           type=bool,      default = False)
     parser.add_argument('--feature_extractor',  type=str,       default = 'features')
-    parser.add_ar
+    parser.add_argument('--seg_mode',           type=str,       default = seg_mode)
+
+    # CBS
+    parser.add_argument('--use_cbs',            type=bool,      default = False)
+
+    # Knowledge distillation
+    parser.
