@@ -267,4 +267,7 @@ if __name__ == "__main__":
     else:
         parser.add_argument('--global_feat',        type=int,       default = 0)
     # data_processing
-    parser.add_argument('--sampler',    
+    parser.add_argument('--sampler',            type=int,       default = 0)
+    parser.add_argument('--data_aug',           type=bool,      default = False)
+    parser.add_argument('--feature_extractor',  type=str,       default = 'features')
+    parser.add_ar
