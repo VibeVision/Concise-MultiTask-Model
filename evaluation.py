@@ -276,4 +276,10 @@ if __name__ == "__main__":
     parser.add_argument('--use_cbs',            type=bool,      default = False)
 
     # Knowledge distillation
-    parser.
+    parser.add_argument('--KD',                 type=bool,      default = False)
+
+    parser.add_argument('--model',              type=str,       default = model_type) 
+    args = parser.parse_args()
+
+    # seed_everything()
+    data_
