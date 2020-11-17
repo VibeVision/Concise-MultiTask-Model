@@ -282,4 +282,14 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # seed_everything()
-    data_
+    data_const = SurgicalSceneConstants()
+
+    label_path = 'dataset/labels_isi_dataset.json'
+    with open(label_path) as f:
+        labels = json.load(f)
+
+    CLASSES = []
+    CLASS_ID = []
+
+    for item in labels:
+       
