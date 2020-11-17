@@ -292,4 +292,10 @@ if __name__ == "__main__":
     CLASS_ID = []
 
     for item in labels:
-       
+        CLASSES.append(item['name'])
+        CLASS_ID.append(item['classid'])
+
+    map_dict = {k: v for k, v in zip(CLASS_ID, CLASSES)}
+
+    # this is placed above the dist.init process, possibility because of the feature_extraction model.
+    mod
