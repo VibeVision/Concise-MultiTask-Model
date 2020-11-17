@@ -298,4 +298,10 @@ if __name__ == "__main__":
     map_dict = {k: v for k, v in zip(CLASS_ID, CLASSES)}
 
     # this is placed above the dist.init process, possibility because of the feature_extraction model.
-    mod
+    model = build_model(args)
+    model.set_train_test(args.model)
+
+    # insert nn layers based on type.
+    if args.model == 'amtl-t1' or args.model == 'mtl-t1':
+        model.model_type1_insert()
+    elif args.model == 'amtl-t2' o
