@@ -325,4 +325,7 @@ if __name__ == "__main__":
     dset = [0]
     data_const = SurgicalSceneConstants()
 
-    seq = {'va
+    seq = {'val_seq': val_seq, 'data_dir': data_dir, 'img_dir': img_dir, 'dset': dset, 'mask_dir': mask_dir}
+
+    # val_dataset only set in 1 GPU
+    val_dataset = SurgicalSceneDataset(seq_set=seq['val_seq'], dset=seq['dset
