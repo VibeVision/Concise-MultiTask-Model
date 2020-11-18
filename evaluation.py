@@ -315,4 +315,14 @@ if __name__ == "__main__":
     model.load_state_dict(pretrained_model)
     
     # Wrap the model with ddp
-  
+    model.cuda()
+
+    # train and test dataloader
+    val_seq = [[1, 5, 16]]
+    data_dir = ['dataset/seq_']
+    img_dir = ['/left_frames/']
+    mask_dir = ['/annotations/']
+    dset = [0]
+    data_const = SurgicalSceneConstants()
+
+    seq = {'va
