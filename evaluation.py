@@ -304,4 +304,10 @@ if __name__ == "__main__":
     # insert nn layers based on type.
     if args.model == 'amtl-t1' or args.model == 'mtl-t1':
         model.model_type1_insert()
-    elif args.model == 'amtl-t2' o
+    elif args.model == 'amtl-t2' or args.model == 'mtl-t2':
+        model.model_type2_insert()
+    elif args.model == 'amtl-t3' or args.model == 'mtl-t3':
+        model.model_type3_insert()
+
+    # load pre-trained stl_mtl_model
+    print('Loadi
