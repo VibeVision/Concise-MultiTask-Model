@@ -310,4 +310,9 @@ if __name__ == "__main__":
         model.model_type3_insert()
 
     # load pre-trained stl_mtl_model
-    print('Loadi
+    print('Loading pre-trained weights')
+    pretrained_model = torch.load(('checkpoints/'+checkpoint_dir+'/best_epoch.pth'))
+    model.load_state_dict(pretrained_model)
+    
+    # Wrap the model with ddp
+  
