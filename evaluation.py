@@ -333,4 +333,4 @@ if __name__ == "__main__":
                                        feature_extractor=args.feature_extractor, reduce_size=False)
     val_dataloader = DataLoader(dataset=val_dataset, batch_size=args.batch_size, shuffle=True, collate_fn=collate_fn)
 
-    mode
+    model_eval(model, val_dataloader)
