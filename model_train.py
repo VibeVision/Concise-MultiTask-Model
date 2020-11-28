@@ -30,3 +30,12 @@ import torch.multiprocessing as mp
 import torch.distributed as dist
 from torch.nn.parallel import DistributedDataParallel as DDP
 
+
+def seed_everything(seed=27):
+    '''
+    Set random seed for reproducible experiments
+    Inputs: seed number 
+    '''
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
+    os.environ['PYTHONHASHSE
