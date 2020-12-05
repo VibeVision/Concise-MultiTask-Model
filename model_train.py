@@ -46,4 +46,8 @@ def seed_everything(seed=27):
 def seg_eval_batch(seg_output, target):
     '''
     Calculate segmentation loss, pixel acc and IoU
-    Inputs: predicted segmenta
+    Inputs: predicted segmentation mask, GT segmentation mask 
+    '''
+    seg_criterion = SegmentationLosses(se_loss=False, aux=False, nclass=8, se_weight=0.2, aux_weight=0.2)
+    loss = seg_criterion(seg_output, target)
+    correct, labeled = batch_pix_accuracy(seg_outp
