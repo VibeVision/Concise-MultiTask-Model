@@ -60,4 +60,7 @@ def get_checkpoint_loc(model_type, seg_mode = None):
         if seg_mode is None:
             loc = 'checkpoints/stl_s/stl_s/epoch_train/checkpoint_D153_epoch.pth'
         elif seg_mode == 'v1':
-            loc = 'checkp
+            loc = 'checkpoints/stl_s_v1/stl_s_v1/epoch_train/checkpoint_D168_epoch.pth'
+        elif seg_mode == 'v2_gc':
+            loc = 'checkpoints/stl_s_v2_gc/stl_s_v2_gc/epoch_train/checkpoint_D168_epoch.pth'
+    elif
