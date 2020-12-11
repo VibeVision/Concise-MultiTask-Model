@@ -55,4 +55,9 @@ def seg_eval_batch(seg_output, target):
     return correct, labeled, inter, union, loss
 
 def get_checkpoint_loc(model_type, seg_mode = None):
-    loc = No
+    loc = None
+    if model_type == 'amtl-t0' or model_type == 'amtl-t3':
+        if seg_mode is None:
+            loc = 'checkpoints/stl_s/stl_s/epoch_train/checkpoint_D153_epoch.pth'
+        elif seg_mode == 'v1':
+            loc = 'checkp
