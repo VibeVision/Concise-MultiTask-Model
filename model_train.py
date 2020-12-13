@@ -66,4 +66,16 @@ def get_checkpoint_loc(model_type, seg_mode = None):
     elif model_type == 'amtl-t1':
         loc = 'checkpoints/stl_s/stl_s/epoch_train/checkpoint_D168_epoch.pth'
     elif model_type == 'amtl-t2':
-        loc = 'checkpoints/stl_sg_wfe/stl_sg_wfe/epoch_train/checkpoint_D11
+        loc = 'checkpoints/stl_sg_wfe/stl_sg_wfe/epoch_train/checkpoint_D110_epoch.pth'
+    return loc
+
+def build_model(args):
+    '''
+    Build MTL model
+    1) Scene Graph Understanding Model
+    2) Segmentation Model : Encoder, Reasoning unit, Decoder
+
+    Inputs: args
+    '''
+
+    ''
