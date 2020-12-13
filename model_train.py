@@ -82,4 +82,7 @@ def build_model(args):
     # graph model
     scene_graph = AGRNN(bias=True, bn=False, dropout=0.3, multi_attn=False, layer=1, diff_edge=False, global_feat=args.global_feat)
 
-    # segmentation 
+    # segmentation model
+    seg_model = get_gcnet(backbone='resnet18_model', pretrained=True)
+    model = mtl_model(seg_model.pretrained, scene_graph, seg_model.gr_interaction, seg_model.gr_decoder, seg_mode = args.seg_mode)
+    model.to(torch.
