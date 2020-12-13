@@ -78,4 +78,8 @@ def build_model(args):
     Inputs: args
     '''
 
-    ''
+    '''==== Graph model ===='''
+    # graph model
+    scene_graph = AGRNN(bias=True, bn=False, dropout=0.3, multi_attn=False, layer=1, diff_edge=False, global_feat=args.global_feat)
+
+    # segmentation 
