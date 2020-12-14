@@ -95,3 +95,13 @@ def model_eval(args, model, validation_dataloader):
     Inputs: args, model, val-dataloader
 
     '''
+
+    model.eval()
+
+    # graph
+    scene_graph_criterion = nn.MultiLabelSoftMarginLoss()
+    scene_graph_edge_count = 0
+    scene_graph_total_acc = 0.0
+    scene_graph_total_loss = 0.0
+    scene_graph_logits_list = []
+    scen
