@@ -104,4 +104,10 @@ def model_eval(args, model, validation_dataloader):
     scene_graph_total_acc = 0.0
     scene_graph_total_loss = 0.0
     scene_graph_logits_list = []
-    scen
+    scene_graph_labels_list = []
+
+    test_seg_loss = 0.0
+    total_inter, total_union, total_correct, total_label = 0, 0, 0, 0
+    
+    for data in tqdm(validation_dataloader):
+        seg_img = da
