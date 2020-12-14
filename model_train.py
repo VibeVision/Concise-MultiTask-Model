@@ -85,4 +85,13 @@ def build_model(args):
     # segmentation model
     seg_model = get_gcnet(backbone='resnet18_model', pretrained=True)
     model = mtl_model(seg_model.pretrained, scene_graph, seg_model.gr_interaction, seg_model.gr_decoder, seg_mode = args.seg_mode)
-    model.to(torch.
+    model.to(torch.device('cpu'))
+    return model
+
+
+def model_eval(args, model, validation_dataloader):
+    '''
+    Evaluate function for the MTL model (Segmentation and Scene Graph Performance)
+    Inputs: args, model, val-dataloader
+
+    '''
