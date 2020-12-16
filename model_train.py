@@ -110,4 +110,10 @@ def model_eval(args, model, validation_dataloader):
     total_inter, total_union, total_correct, total_label = 0, 0, 0, 0
     
     for data in tqdm(validation_dataloader):
-        seg_img = da
+        seg_img = data['img']
+        seg_masks = data['mask']
+        img_loc = data['img_loc']
+        node_num = data['node_num']
+        roi_labels = data['roi_labels']
+        det_boxes = data['det_boxes']
+        edge_la
