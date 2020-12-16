@@ -116,4 +116,8 @@ def model_eval(args, model, validation_dataloader):
         node_num = data['node_num']
         roi_labels = data['roi_labels']
         det_boxes = data['det_boxes']
-        edge_la
+        edge_labels = data['edge_labels']
+        spatial_feat = data['spatial_feat']
+        word2vec = data['word2vec']
+
+        spatial_feat, word2vec, edge_labels = spatial_feat.cuda(non_blocking=True), word2vec.cuda(no
