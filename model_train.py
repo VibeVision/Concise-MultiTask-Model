@@ -124,4 +124,9 @@ def model_eval(args, model, validation_dataloader):
         seg_img, seg_masks = seg_img.cuda(non_blocking=True), seg_masks.cuda(non_blocking=True)
 
         with torch.no_grad():
-            interaction, seg_outputs, _
+            interaction, seg_outputs, _ = model(seg_img, img_loc, det_boxes, node_num, spatial_feat, word2vec, roi_labels, validation=True)
+
+        scene_graph_logits_list.append(interaction)
+        scene_graph_labels_list.append(edge_labels)
+
+        # Loss and accu
