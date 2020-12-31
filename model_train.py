@@ -135,4 +135,10 @@ def model_eval(args, model, validation_dataloader):
         correct, labeled, inter, union, t_loss = seg_eval_batch(seg_outputs, seg_masks)
 
         # Accumulate scene graph loss and acc
-        scene_graph_total_loss += scene_graph
+        scene_graph_total_loss += scene_graph_loss.item() * edge_labels.shape[0]
+        scene_graph_total_acc += scene_graph_acc
+        scene_graph_edge_count += edge_labels.shape[0]
+
+        total_correct += correct
+        total_label += labeled
+        total_inter += in
