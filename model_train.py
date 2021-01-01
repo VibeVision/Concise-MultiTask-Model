@@ -141,4 +141,10 @@ def model_eval(args, model, validation_dataloader):
 
         total_correct += correct
         total_label += labeled
-        total_inter += in
+        total_inter += inter
+        total_union += union
+        test_seg_loss += t_loss.item()
+
+    # Graph evaluation
+    scene_graph_total_acc = scene_graph_total_acc / scene_graph_edge_count
+    scene_graph_total_loss = scene_graph_total_loss / len(
