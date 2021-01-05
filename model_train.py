@@ -155,4 +155,8 @@ def model_eval(args, model, validation_dataloader):
 
     # Segmentation evaluation
     pixAcc = 1.0 * total_correct / (np.spacing(1) + total_label)
-    
+    IoU = 1.0 * total_inter / (np.spacing(1) + total_union)
+    mIoU = IoU.mean()
+
+    print('================= Evaluation ====================')
+    print('Graph        :  acc: %0.4f  map: %0.4f recall: %0.4f  loss
