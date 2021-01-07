@@ -170,4 +170,11 @@ def train_model(gpu, args):
     Inputs:  number of gpus per node, args
 
     '''
-    # Store best 
+    # Store best value and epoch number
+    best_value = [0.0, 0.0, 0.0]
+    best_epoch = [0, 0, 0]
+
+    # Decaying learning rate
+    decay_lr = args.lr
+
+    # This is placed above the dist.init process, because of the feature_extrac
