@@ -187,4 +187,12 @@ def train_model(gpu, args):
         pretrained_dict = pretrained_model['state_dict']
         model_dict = model.state_dict()
         pretrained_dict = {k: v for k, v in pretrained_dict.items() if (k in model_dict) and (model_dict[k].shape == pretrained_dict[k].shape)}
-        model_dict.upd
+        model_dict.update(pretrained_dict) 
+        model.load_state_dict(model_dict)
+
+    # Set training flag for submodules based on train model.
+    model.set_train_test(args.model)
+
+
+    if args.KD:
+        teacher_model = build_model(args, loa
