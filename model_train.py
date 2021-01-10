@@ -182,4 +182,6 @@ def train_model(gpu, args):
 
     # Load pre-trained weights
     if args.model == 'amtl-t0' or args.model == 'amtl-t3' or args.model == 'amtl-t0-ft' or args.model == 'amtl-t1' or args.model == 'amtl-t2':
-        print('Loading p
+        print('Loading pre-trained weights for Sequential Optimisation')
+        pretrained_model = torch.load(get_checkpoint_loc(args.model, args.seg_mode))
+        pretrained_dict = pretrained_model['state_di
