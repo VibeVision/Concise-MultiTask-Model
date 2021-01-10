@@ -177,4 +177,9 @@ def train_model(gpu, args):
     # Decaying learning rate
     decay_lr = args.lr
 
-    # This is placed above the dist.init process, because of the feature_extrac
+    # This is placed above the dist.init process, because of the feature_extraction model.
+    model = build_model(args)
+
+    # Load pre-trained weights
+    if args.model == 'amtl-t0' or args.model == 'amtl-t3' or args.model == 'amtl-t0-ft' or args.model == 'amtl-t1' or args.model == 'amtl-t2':
+        print('Loading p
