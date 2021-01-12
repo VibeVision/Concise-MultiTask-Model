@@ -198,4 +198,7 @@ def train_model(gpu, args):
         teacher_model = build_model(args, load_pretrained=False)
         # Load pre-trained stl_mtl_model
         print('Preparing teacher model')
-        pretrained_model = torch.load('/media/mobarak/data/lalith/mtl_scene_understanding_and_segmentation/ch
+        pretrained_model = torch.load('/media/mobarak/data/lalith/mtl_scene_understanding_and_segmentation/checkpoints/stl_s_v1/stl_s_v1/epoch_train/checkpoint_D168_epoch.pth')
+        pretrained_dict = pretrained_model['state_dict']
+        model_dict = teacher_model.state_dict()
+        pretrained_dict = {k: v for k, v in p
