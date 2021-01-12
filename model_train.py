@@ -195,4 +195,7 @@ def train_model(gpu, args):
 
 
     if args.KD:
-        teacher_model = build_model(args, loa
+        teacher_model = build_model(args, load_pretrained=False)
+        # Load pre-trained stl_mtl_model
+        print('Preparing teacher model')
+        pretrained_model = torch.load('/media/mobarak/data/lalith/mtl_scene_understanding_and_segmentation/ch
