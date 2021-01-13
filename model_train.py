@@ -201,4 +201,7 @@ def train_model(gpu, args):
         pretrained_model = torch.load('/media/mobarak/data/lalith/mtl_scene_understanding_and_segmentation/checkpoints/stl_s_v1/stl_s_v1/epoch_train/checkpoint_D168_epoch.pth')
         pretrained_dict = pretrained_model['state_dict']
         model_dict = teacher_model.state_dict()
-        pretrained_dict = {k: v for k, v in p
+        pretrained_dict = {k: v for k, v in pretrained_dict.items() if (k in model_dict) and (model_dict[k].shape == pretrained_dict[k].shape)}
+        model_dict.update(pretrained_dict) 
+        teacher_model.load_state_dict(model_dict)
+        if args.mod
