@@ -209,4 +209,11 @@ def train_model(gpu, args):
             teacher_model.model_type3_insert()
             teacher_model.cuda()
         else:
-            teacher_model.set_train
+            teacher_model.set_train_test('stl-s')
+        teacher_model.cuda()
+        teacher_model.eval()
+
+    # Insert nn layers based on type.
+    if args.model == 'amtl-t1' or args.model == 'mtl-t1':
+        model.model_type1_insert()
+    elif args.mod
