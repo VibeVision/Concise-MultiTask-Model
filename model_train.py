@@ -204,4 +204,9 @@ def train_model(gpu, args):
         pretrained_dict = {k: v for k, v in pretrained_dict.items() if (k in model_dict) and (model_dict[k].shape == pretrained_dict[k].shape)}
         model_dict.update(pretrained_dict) 
         teacher_model.load_state_dict(model_dict)
-        if args.mod
+        if args.model == 'mtl-t3':
+            teacher_model.set_train_test('mtl-t3')
+            teacher_model.model_type3_insert()
+            teacher_model.cuda()
+        else:
+            teacher_model.set_train
