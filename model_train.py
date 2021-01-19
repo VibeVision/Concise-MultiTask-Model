@@ -221,4 +221,8 @@ def train_model(gpu, args):
     elif args.model == 'amtl-t3' or args.model == 'mtl-t3':
         model.model_type3_insert()
 
-    # Priority rank given to node 0 -> curr
+    # Priority rank given to node 0 -> current pc, if more nodes -> multiple PCs
+    os.environ['MASTER_ADDR'] = 'localhost'
+    os.environ['MASTER_PORT'] = args.port #8892
+    rank = args.nr * args.gpus + gpu
+    dist.init_process_group(backend='nccl', init_method='
