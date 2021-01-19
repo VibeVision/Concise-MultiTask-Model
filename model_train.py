@@ -216,4 +216,9 @@ def train_model(gpu, args):
     # Insert nn layers based on type.
     if args.model == 'amtl-t1' or args.model == 'mtl-t1':
         model.model_type1_insert()
-    elif args.mod
+    elif args.model == 'amtl-t2' or args.model == 'mtl-t2':
+        model.model_type2_insert()
+    elif args.model == 'amtl-t3' or args.model == 'mtl-t3':
+        model.model_type3_insert()
+
+    # Priority rank given to node 0 -> curr
