@@ -242,4 +242,9 @@ def train_model(gpu, args):
     train_seq = [[2, 3, 4, 6, 7, 9, 10, 11, 12, 14, 15]]
     val_seq = [[1, 5, 16]]
     data_dir = ['datasets/instruments18/seq_']
- 
+    img_dir = ['/left_frames/']
+    mask_dir = ['/annotations/']
+    dset = [0]
+    data_const = SurgicalSceneConstants()
+
+    seq = {'train_seq': train_seq, 'val_seq': val_seq, 'data_dir': data_dir, 'img_dir': img_dir, 'dset': ds
