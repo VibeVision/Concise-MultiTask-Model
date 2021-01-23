@@ -236,4 +236,10 @@ def train_model(gpu, args):
 
     # Define loss function (criterion) and optimizer
     seg_criterion = SegmentationLosses(se_loss=False, aux=False, nclass=8, se_weight=0.2, aux_weight=0.2).cuda(gpu)
-    graph_scene_criterio
+    graph_scene_criterion = nn.MultiLabelSoftMarginLoss().cuda(gpu)
+    
+    # train and test dataloader
+    train_seq = [[2, 3, 4, 6, 7, 9, 10, 11, 12, 14, 15]]
+    val_seq = [[1, 5, 16]]
+    data_dir = ['datasets/instruments18/seq_']
+ 
