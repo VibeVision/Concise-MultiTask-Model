@@ -225,4 +225,11 @@ def train_model(gpu, args):
     os.environ['MASTER_ADDR'] = 'localhost'
     os.environ['MASTER_PORT'] = args.port #8892
     rank = args.nr * args.gpus + gpu
-    dist.init_process_group(backend='nccl', init_method='
+    dist.init_process_group(backend='nccl', init_method='env://', world_size=args.world_size, rank=rank)
+
+    # Set cuda
+    torch.cuda.set_device(gpu)
+
+    # Wrap the model with ddp
+    model.cuda()
+    model = DDP(model, device_ids=[gpu], find_unused_parameters=True)#, find_unuse
