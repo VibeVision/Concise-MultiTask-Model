@@ -232,4 +232,8 @@ def train_model(gpu, args):
 
     # Wrap the model with ddp
     model.cuda()
-    model = DDP(model, device_ids=[gpu], find_unused_parameters=True)#, find_unuse
+    model = DDP(model, device_ids=[gpu], find_unused_parameters=True)#, find_unused_parameters=True)
+
+    # Define loss function (criterion) and optimizer
+    seg_criterion = SegmentationLosses(se_loss=False, aux=False, nclass=8, se_weight=0.2, aux_weight=0.2).cuda(gpu)
+    graph_scene_criterio
