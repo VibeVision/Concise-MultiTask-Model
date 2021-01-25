@@ -247,4 +247,8 @@ def train_model(gpu, args):
     dset = [0]
     data_const = SurgicalSceneConstants()
 
-    seq = {'train_seq': train_seq, 'val_seq': val_seq, 'data_dir': data_dir, 'img_dir': img_dir, 'dset': ds
+    seq = {'train_seq': train_seq, 'val_seq': val_seq, 'data_dir': data_dir, 'img_dir': img_dir, 'dset': dset, 'mask_dir': mask_dir}
+
+    # Val_dataset only set in 1 GPU
+    val_dataset = SurgicalSceneDataset(seq_set=seq['val_seq'], dset=seq['dset'], data_dir=seq['data_dir'], \
+                      
