@@ -253,4 +253,7 @@ def train_model(gpu, args):
     val_dataset = SurgicalSceneDataset(seq_set=seq['val_seq'], dset=seq['dset'], data_dir=seq['data_dir'], \
                                        img_dir=seq['img_dir'], mask_dir=seq['mask_dir'], istrain=False, dataconst=data_const, \
                                        feature_extractor=args.feature_extractor, reduce_size=False)
-    val_dataloader = DataLoader(dataset=va
+    val_dataloader = DataLoader(dataset=val_dataset, batch_size=args.batch_size, shuffle=True, collate_fn=collate_fn)
+
+    # Train_dataset distributed to 2 GPU
+    train_dataset = SurgicalSceneDataset(seq_set=seq['train_seq'], data_dir=seq
