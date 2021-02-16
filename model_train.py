@@ -261,4 +261,7 @@ def train_model(gpu, args):
                                          feature_extractor=args.feature_extractor, reduce_size=False)
 
     train_sampler = torch.utils.data.distributed.DistributedSampler(train_dataset, num_replicas=args.world_size, rank=rank, shuffle=True)
-    train_dataloader = t
+    train_dataloader = torch.utils.data.DataLoader(dataset=train_dataset, batch_size=args.batch_size, shuffle=False, collate_fn=collate_fn, num_workers=0, pin_memory=True, sampler=train_sampler)
+
+    # Evaluate the model before start of training
+    if 
