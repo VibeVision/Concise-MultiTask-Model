@@ -256,4 +256,6 @@ def train_model(gpu, args):
     val_dataloader = DataLoader(dataset=val_dataset, batch_size=args.batch_size, shuffle=True, collate_fn=collate_fn)
 
     # Train_dataset distributed to 2 GPU
-    train_dataset = SurgicalSceneDataset(seq_set=seq['train_seq'], data_dir=seq
+    train_dataset = SurgicalSceneDataset(seq_set=seq['train_seq'], data_dir=seq['data_dir'],
+                                         img_dir=seq['img_dir'], mask_dir=seq['mask_dir'], dset=seq['dset'], istrain=True, dataconst=data_const,
+                                         feature_extra
