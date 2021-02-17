@@ -264,4 +264,8 @@ def train_model(gpu, args):
     train_dataloader = torch.utils.data.DataLoader(dataset=train_dataset, batch_size=args.batch_size, shuffle=False, collate_fn=collate_fn, num_workers=0, pin_memory=True, sampler=train_sampler)
 
     # Evaluate the model before start of training
-    if 
+    if gpu == 0:
+        if args.KD:
+            print("=================== Teacher Model=========================")
+            eval_sc_acc, eval_sc_map, eval_seg_miou = model_eval(args, teacher_model, val_dataloader)
+            print("==========
