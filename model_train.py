@@ -268,4 +268,6 @@ def train_model(gpu, args):
         if args.KD:
             print("=================== Teacher Model=========================")
             eval_sc_acc, eval_sc_map, eval_seg_miou = model_eval(args, teacher_model, val_dataloader)
-            print("==========
+            print("=================== Student Model=========================")
+        eval_sc_acc, eval_sc_map, eval_seg_miou = model_eval(args, model, val_dataloader)
+        print("PT SC ACC: [value: {:0.4f}] PT SC mAP: [value: {:0.4f}] PT Seg
