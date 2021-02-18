@@ -270,4 +270,12 @@ def train_model(gpu, args):
             eval_sc_acc, eval_sc_map, eval_seg_miou = model_eval(args, teacher_model, val_dataloader)
             print("=================== Student Model=========================")
         eval_sc_acc, eval_sc_map, eval_seg_miou = model_eval(args, model, val_dataloader)
-        print("PT SC ACC: [value: {:0.4f}] PT SC mAP: [value: {:0.4f}] PT Seg
+        print("PT SC ACC: [value: {:0.4f}] PT SC mAP: [value: {:0.4f}] PT Seg mIoU: [value: {:0.4f}]".format(eval_sc_acc, eval_sc_map, eval_seg_miou))
+
+    for epoch_count in range(args.epoch):
+
+        start_time = time.time()
+
+        # Set model / submodules in train mode
+        model.train()
+        if args.model == '
