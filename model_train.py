@@ -278,4 +278,8 @@ def train_model(gpu, args):
 
         # Set model / submodules in train mode
         model.train()
-        if args.model == '
+        if args.model == 'stl-sg' or args.model == 'amtl-t0' or args.model == 'amtl-t3':
+            model.module.feature_encoder.eval()
+            model.module.gcn_unit.eval()
+            model.module.seg_decoder.eval()
+        elif args.model == 
