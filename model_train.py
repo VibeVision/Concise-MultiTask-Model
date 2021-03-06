@@ -282,4 +282,10 @@ def train_model(gpu, args):
             model.module.feature_encoder.eval()
             model.module.gcn_unit.eval()
             model.module.seg_decoder.eval()
-        elif args.model == 
+        elif args.model == 'stl-sg-wfe':
+            model.module.gcn_unit.eval()
+            model.module.seg_decoder.eval()
+        elif args.model == 'stl-s':
+            model.module.scene_graph.eval()
+
+        train_seg_loss = 0.0
