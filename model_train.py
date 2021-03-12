@@ -302,4 +302,9 @@ def train_model(gpu, args):
         if gpu == 0: print('================= Train ====================')
 
         for data in tqdm(train_dataloader):
-         
+            seg_img = data['img']
+            seg_masks = data['mask']
+            img_loc = data['img_loc']
+            node_num = data['node_num']
+            roi_labels = data['roi_labels']
+            det_boxes = data['det_bo
