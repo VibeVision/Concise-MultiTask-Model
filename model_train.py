@@ -295,4 +295,11 @@ def train_model(gpu, args):
 
         # Optimizer with decaying learning rate
         decay_lr = decay_lr*0.98 if ((epoch_count+1) %10 == 0) else decay_lr
-        optimizer = optim.Ad
+        optimizer = optim.Adam(model.parameters(), lr=decay_lr, weight_decay=0)
+
+        train_sampler.set_epoch(epoch_count)
+
+        if gpu == 0: print('================= Train ====================')
+
+        for data in tqdm(train_dataloader):
+         
