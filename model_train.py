@@ -289,3 +289,10 @@ def train_model(gpu, args):
             model.module.scene_graph.eval()
 
         train_seg_loss = 0.0
+        train_scene_graph_loss = 0.0
+
+        model.cuda()
+
+        # Optimizer with decaying learning rate
+        decay_lr = decay_lr*0.98 if ((epoch_count+1) %10 == 0) else decay_lr
+        optimizer = optim.Ad
