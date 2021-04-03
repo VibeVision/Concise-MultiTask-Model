@@ -316,4 +316,8 @@ def train_model(gpu, args):
             seg_img, seg_masks = seg_img.cuda(non_blocking=True), seg_masks.cuda(non_blocking=True)
 
             # Forward propagation
-            interaction, seg_outpu
+            interaction, seg_outputs, fe_feat = model(seg_img, img_loc, det_boxes, node_num, spatial_feat, word2vec, roi_labels)
+
+            # Loss calculation
+            seg_loss = seg_criterion(seg_outputs, seg_masks)
+            scene_graph_loss = graph_scene_c
