@@ -307,4 +307,9 @@ def train_model(gpu, args):
             img_loc = data['img_loc']
             node_num = data['node_num']
             roi_labels = data['roi_labels']
-            det_boxes = data['det_bo
+            det_boxes = data['det_boxes']
+            edge_labels = data['edge_labels']
+            spatial_feat = data['spatial_feat']
+            word2vec = data['word2vec']
+
+            spatial_feat, word2vec, edge_labels = spatial_feat.cuda(non_blocking=True),
