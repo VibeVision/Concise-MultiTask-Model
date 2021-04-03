@@ -312,4 +312,8 @@ def train_model(gpu, args):
             spatial_feat = data['spatial_feat']
             word2vec = data['word2vec']
 
-            spatial_feat, word2vec, edge_labels = spatial_feat.cuda(non_blocking=True),
+            spatial_feat, word2vec, edge_labels = spatial_feat.cuda(non_blocking=True), word2vec.cuda(non_blocking=True), edge_labels.cuda(non_blocking=True)
+            seg_img, seg_masks = seg_img.cuda(non_blocking=True), seg_masks.cuda(non_blocking=True)
+
+            # Forward propagation
+            interaction, seg_outpu
