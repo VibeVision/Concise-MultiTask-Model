@@ -320,4 +320,9 @@ def train_model(gpu, args):
 
             # Loss calculation
             seg_loss = seg_criterion(seg_outputs, seg_masks)
-            scene_graph_loss = graph_scene_c
+            scene_graph_loss = graph_scene_criterion(interaction, edge_labels.float())
+
+            # KD-Loss
+            if args.KD:
+                with torch.no_grad():
+                    _, _, t_fe_feat = teacher_model(seg_img, img_loc, det_boxes, node_num, spatial_feat, word2vec, roi
