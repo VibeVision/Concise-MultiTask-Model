@@ -332,4 +332,9 @@ def train_model(gpu, args):
                     
                 fe_feat = fe_feat
                 fe_feat = fe_feat / (fe_feat.pow(2).sum(1) + 1e-6).sqrt().view(fe_feat.size(0), 1, fe_feat.size(2), fe_feat.size(3))
-                dist_
+                dist_loss = (fe_feat - t_fe_feat).pow(2).sum(1).mean()
+                        
+                
+            if args.model == 'stl-s':
+                loss_total = seg_loss
+            elif args.model == 'stl-sg' or args.model == 'st
