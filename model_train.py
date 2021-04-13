@@ -327,4 +327,9 @@ def train_model(gpu, args):
                 with torch.no_grad():
                     _, _, t_fe_feat = teacher_model(seg_img, img_loc, det_boxes, node_num, spatial_feat, word2vec, roi_labels, validation=True)
                     t_fe_feat = t_fe_feat.detach()
-                    t_fe_feat = t_fe_feat / (t_fe_feat.pow(2).sum(1) + 1e-6).sqrt().view(t_fe_feat.size(0), 1, t_fe_feat.size(2), t_fe_feat.s
+                    t_fe_feat = t_fe_feat / (t_fe_feat.pow(2).sum(1) + 1e-6).sqrt().view(t_fe_feat.size(0), 1, t_fe_feat.size(2), t_fe_feat.size(3))
+                
+                    
+                fe_feat = fe_feat
+                fe_feat = fe_feat / (fe_feat.pow(2).sum(1) + 1e-6).sqrt().view(fe_feat.size(0), 1, fe_feat.size(2), fe_feat.size(3))
+                dist_
