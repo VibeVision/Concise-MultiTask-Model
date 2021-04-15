@@ -341,4 +341,9 @@ def train_model(gpu, args):
                 loss_total = scene_graph_loss
             elif args.KD:
                 loss_total = (0.4 * scene_graph_loss) + seg_loss + dist_loss
-  
+            else:
+                loss_total = (0.4 * scene_graph_loss)+ (0.6 * seg_loss)
+            
+            optimizer.zero_grad()
+            loss_total.backward()
+            optimizer.step()
