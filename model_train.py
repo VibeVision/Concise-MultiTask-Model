@@ -337,4 +337,8 @@ def train_model(gpu, args):
                 
             if args.model == 'stl-s':
                 loss_total = seg_loss
-            elif args.model == 'stl-sg' or args.model == 'st
+            elif args.model == 'stl-sg' or args.model == 'stl-sg-wfe' or args.model == 'amtl-t0' or args.model == 'amtl-t3':
+                loss_total = scene_graph_loss
+            elif args.KD:
+                loss_total = (0.4 * scene_graph_loss) + seg_loss + dist_loss
+  
