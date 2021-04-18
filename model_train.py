@@ -360,4 +360,7 @@ def train_model(gpu, args):
             print("Train Epoch: {}/{} lr: {:0.9f}  Graph_loss: {:0.4f} Segmentation_Loss: {:0.4f} Execution time: {:0.4f}".format(\
                     epoch_count + 1, args.epoch, decay_lr, train_scene_graph_loss, train_seg_loss, (end_time-start_time)))
 
-         
+            #if epoch_count % 2 == 0:
+            # save model
+            # if epoch_loss<0.0405 or epoch_count % args.save_every == (args.save_every - 1):
+            checkpoint = {  'lr': args.lr, 'b_s': args.batch_size, 'bias': 
