@@ -352,4 +352,9 @@ def train_model(gpu, args):
             train_scene_graph_loss += scene_graph_loss.item() * edge_labels.shape[0]
 
         # calculate the loss and accuracy of each epoch
-        train_seg_loss += t
+        train_seg_loss += train_seg_loss / len(train_dataloader)
+        train_scene_graph_loss = train_scene_graph_loss / len(train_dataloader)
+
+        if gpu == 0:
+            end_time = time.time()
+            print("Train Epoch: {}/{} lr: {:0.9f}  
