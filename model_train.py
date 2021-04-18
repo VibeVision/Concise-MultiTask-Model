@@ -347,3 +347,9 @@ def train_model(gpu, args):
             optimizer.zero_grad()
             loss_total.backward()
             optimizer.step()
+
+            train_seg_loss += seg_loss.item()
+            train_scene_graph_loss += scene_graph_loss.item() * edge_labels.shape[0]
+
+        # calculate the loss and accuracy of each epoch
+        train_seg_loss += t
