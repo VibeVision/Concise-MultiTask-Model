@@ -370,4 +370,8 @@ def train_model(gpu, args):
             save_name = "checkpoint_D1" + str(epoch_count+1) + '_epoch.pth'
             torch.save(checkpoint, os.path.join(args.save_dir, args.exp_ver, 'epoch_train', save_name))
             
-            eval_sc_acc, eval_sc_map, eval_seg_mio
+            eval_sc_acc, eval_sc_map, eval_seg_miou = model_eval(args, model, val_dataloader)
+            if eval_sc_acc > best_value[0]:
+                best_value[0] = eval_sc_acc
+                best_epoch[0] = epoch_count+1
+            if eval_sc_map > best_va
