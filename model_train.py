@@ -374,4 +374,9 @@ def train_model(gpu, args):
             if eval_sc_acc > best_value[0]:
                 best_value[0] = eval_sc_acc
                 best_epoch[0] = epoch_count+1
-            if eval_sc_map > best_va
+            if eval_sc_map > best_value[1]:
+                best_value[1] = eval_sc_map
+                best_epoch[1] = epoch_count+1
+            if eval_seg_miou > best_value[2]:
+                best_value[2] = eval_seg_miou
+                best
