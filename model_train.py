@@ -365,4 +365,9 @@ def train_model(gpu, args):
             # if epoch_loss<0.0405 or epoch_count % args.save_every == (args.save_every - 1):
             checkpoint = {  'lr': args.lr, 'b_s': args.batch_size, 'bias': args.bias, 'bn': args.bn, 'dropout': args.drop_prob,
                             'layers': args.layers, 'multi_head': args.multi_attn,
-                            'diff_edge': args.diff_edge, 'state_dict': model.module.sta
+                            'diff_edge': args.diff_edge, 'state_dict': model.module.state_dict() }
+
+            save_name = "checkpoint_D1" + str(epoch_count+1) + '_epoch.pth'
+            torch.save(checkpoint, os.path.join(args.save_dir, args.exp_ver, 'epoch_train', save_name))
+            
+            eval_sc_acc, eval_sc_map, eval_seg_mio
