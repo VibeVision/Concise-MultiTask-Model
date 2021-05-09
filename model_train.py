@@ -379,4 +379,6 @@ def train_model(gpu, args):
                 best_epoch[1] = epoch_count+1
             if eval_seg_miou > best_value[2]:
                 best_value[2] = eval_seg_miou
-                best
+                best_epoch[2] = epoch_count+1
+            print("Best SC Acc: [Epoch: {} value: {:0.4f}] Best SC mAP: [Epoch: {} value: {:0.4f}] Best Seg mIoU: [Epoch: {} value: {:0.4f}]".format(\
+                    best
