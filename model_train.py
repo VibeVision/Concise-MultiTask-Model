@@ -391,4 +391,8 @@ if __name__ == "__main__":
     Main function to set arguments
     '''
 
-    # --
+    # ---------------------------------------------- Optimization and feature sharing variants ----------------------------------------------
+    '''
+    Format for the model_type : X-Y 
+
+    -> X : Optimisation technique [1. amtl
