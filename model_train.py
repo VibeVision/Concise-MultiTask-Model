@@ -395,4 +395,6 @@ if __name__ == "__main__":
     '''
     Format for the model_type : X-Y 
 
-    -> X : Optimisation technique [1. amtl
+    -> X : Optimisation technique [1. amtl - Sequential MTL Optimisation, 2. mtl - Naive MTL Optimisation]
+    -> Y : Feature Sharing mechanism [1. t0 - Base model,
+                                      2. t1 - Scene graph features to enhance segmentation (SGFSEG), 
