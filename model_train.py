@@ -381,4 +381,14 @@ def train_model(gpu, args):
                 best_value[2] = eval_seg_miou
                 best_epoch[2] = epoch_count+1
             print("Best SC Acc: [Epoch: {} value: {:0.4f}] Best SC mAP: [Epoch: {} value: {:0.4f}] Best Seg mIoU: [Epoch: {} value: {:0.4f}]".format(\
-                    best
+                    best_epoch[0], best_value[0], best_epoch[1], best_value[1], best_epoch[2], best_value[2]))
+
+    return
+
+
+if __name__ == "__main__":
+    '''
+    Main function to set arguments
+    '''
+
+    # --
