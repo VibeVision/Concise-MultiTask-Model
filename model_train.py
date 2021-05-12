@@ -398,3 +398,13 @@ if __name__ == "__main__":
     -> X : Optimisation technique [1. amtl - Sequential MTL Optimisation, 2. mtl - Naive MTL Optimisation]
     -> Y : Feature Sharing mechanism [1. t0 - Base model,
                                       2. t1 - Scene graph features to enhance segmentation (SGFSEG), 
+                                      3. t3 - Global interaction space features to improve scene graph (GISFSG)]
+
+    '''
+    model_type = 'amtl-t0'
+    ver = model_type + '_v5'
+    port = '8892'
+    f_e = 'resnet18_11_cbs_ts'
+
+
+  
