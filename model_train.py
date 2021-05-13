@@ -407,4 +407,6 @@ if __name__ == "__main__":
     f_e = 'resnet18_11_cbs_ts'
 
 
-  
+    #  ----------------------------------------------Global reasoning variant in segmentation -----------------------------------------------
+    '''
+    -> seg_mode : v1 - (MSLRGR - multi-scale local reasoning and global reasonin
