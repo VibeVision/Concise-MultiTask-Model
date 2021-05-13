@@ -419,4 +419,11 @@ if __name__ == "__main__":
     seed_everything()  
     print(ver, seg_mode)
 
-  
+    # Device Count
+    num_gpu = torch.cuda.device_count()
+
+    # Arguments
+    parser = argparse.ArgumentParser(description='MTL Scene graph and Segmentation')
+
+    # Hyperparameters
+    parser.add_argument('
