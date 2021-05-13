@@ -409,4 +409,14 @@ if __name__ == "__main__":
 
     #  ----------------------------------------------Global reasoning variant in segmentation -----------------------------------------------
     '''
-    -> seg_mode : v1 - (MSLRGR - multi-scale local reasoning and global reasonin
+    -> seg_mode : v1 - (MSLRGR - multi-scale local reasoning and global reasoning) 
+                v2gc - (MSLR - multi-scale local reasoning) 
+                None - Base model
+    '''
+    seg_mode = 'v1'
+    
+    # Set random seed
+    seed_everything()  
+    print(ver, seg_mode)
+
+  
