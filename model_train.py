@@ -426,4 +426,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='MTL Scene graph and Segmentation')
 
     # Hyperparameters
-    parser.add_argument('
+    parser.add_argument('--lr',                 type=float,     default = 0.00001) 
+    parser.add_argument('--epoch',              type=int,       default = 130)
+    parser.add_argument('--start_epoch',        type=int,       default = 0)
+    parser.add_argument
