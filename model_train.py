@@ -431,4 +431,9 @@ if __name__ == "__main__":
     parser.add_argument('--start_epoch',        type=int,       default = 0)
     parser.add_argument('--batch_size',         type=int,       default = 4)
     parser.add_argument('--gpu',                type=bool,      default = True)
-    parser.add_argument('--train_model',        type=str,      
+    parser.add_argument('--train_model',        type=str,       default = 'epoch')
+    parser.add_argument('--exp_ver',            type=str,       default = ver)
+
+    # File locations
+    parser.add_argument('--log_dir',            type=str,       default = './log/' + ver)
+    parser
