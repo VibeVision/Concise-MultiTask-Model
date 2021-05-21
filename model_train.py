@@ -438,4 +438,9 @@ if __name__ == "__main__":
     parser.add_argument('--log_dir',            type=str,       default = './log/' + ver)
     parser.add_argument('--save_dir',           type=str,       default = './checkpoints/' + ver)
     parser.add_argument('--output_img_dir',     type=str,       default = './results/' + ver)
-    parser.add_argument('--save_every',         type=int,       defaul
+    parser.add_argument('--save_every',         type=int,       default = 10)
+    parser.add_argument('--pretrained',         type=str,       default = None)
+
+    # Network settings
+    parser.add_argument('--layers',             type=int,       default = 1)
+    parser.add
