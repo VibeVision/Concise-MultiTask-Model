@@ -443,4 +443,6 @@ if __name__ == "__main__":
 
     # Network settings
     parser.add_argument('--layers',             type=int,       default = 1)
-    parser.add
+    parser.add_argument('--bn',                 type=bool,      default = False)
+    parser.add_argument('--drop_prob',          type=float,     default = 0.3)
+    parser.add_argument('--bias',               type=bool,      default = True)
