@@ -450,4 +450,9 @@ if __name__ == "__main__":
     parser.add_argument('--diff_edge',          type=bool,      default = False)
 
     if model_type == 'mtl-t3' or model_type == 'amtl-t3':
-        parser.ad
+        parser.add_argument('--global_feat',        type=int,       default = 128)
+    else:
+        parser.add_argument('--global_feat',        type=int,       default = 0)
+
+    # Data processing
+    parser.add_argument('--sampler',            t
