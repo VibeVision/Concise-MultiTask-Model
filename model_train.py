@@ -455,4 +455,7 @@ if __name__ == "__main__":
         parser.add_argument('--global_feat',        type=int,       default = 0)
 
     # Data processing
-    parser.add_argument('--sampler',            t
+    parser.add_argument('--sampler',            type=int,       default = 0)
+    parser.add_argument('--data_aug',           type=bool,      default = False)
+    parser.add_argument('--feature_extractor',  type=str,       default = f_e)
+    parser.add_argument('--seg_mode',
