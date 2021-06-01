@@ -463,4 +463,6 @@ if __name__ == "__main__":
     parser.add_argument('--KD',                 type=bool,      default = False)
 
     # GPU distributor
-    parser.add_argument('--port',               type=str,       defau
+    parser.add_argument('--port',               type=str,       default = port)
+    parser.add_argument('--nodes',              type=int,       default = 1,        metavar='N',    help='Number of data loading workers (default: 4)')
+    parser.add_argument('--gpus',               type=int,       
