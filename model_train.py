@@ -458,4 +458,9 @@ if __name__ == "__main__":
     parser.add_argument('--sampler',            type=int,       default = 0)
     parser.add_argument('--data_aug',           type=bool,      default = False)
     parser.add_argument('--feature_extractor',  type=str,       default = f_e)
-    parser.add_argument('--seg_mode',
+    parser.add_argument('--seg_mode',           type=str,       default = seg_mode) # v1/v2_gc
+    
+    parser.add_argument('--KD',                 type=bool,      default = False)
+
+    # GPU distributor
+    parser.add_argument('--port',               type=str,       defau
