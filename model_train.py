@@ -465,4 +465,8 @@ if __name__ == "__main__":
     # GPU distributor
     parser.add_argument('--port',               type=str,       default = port)
     parser.add_argument('--nodes',              type=int,       default = 1,        metavar='N',    help='Number of data loading workers (default: 4)')
-    parser.add_argument('--gpus',               type=int,       
+    parser.add_argument('--gpus',               type=int,       default = num_gpu,                  help='Number of gpus per node')
+    parser.add_argument('--nr',                 type=int,       default = 0,                        help='Ranking within the nodes')
+
+    # Model type
+   
