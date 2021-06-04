@@ -476,4 +476,7 @@ if __name__ == "__main__":
     data_const = SurgicalSceneConstants()
 
     # GPU distributed
-   
+    args.world_size = args.gpus * args.nodes
+
+    # Train model in distributed settings - (train function, number of GPUs, arguments)
+    mp.spawn(train_model, nprocs=args.gpus, args=(args,))
