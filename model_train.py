@@ -469,4 +469,11 @@ if __name__ == "__main__":
     parser.add_argument('--nr',                 type=int,       default = 0,                        help='Ranking within the nodes')
 
     # Model type
+    parser.add_argument('--model',              type=str,       default = model_type) 
+    args = parser.parse_args()
+
+    # Constants for the surgical scene
+    data_const = SurgicalSceneConstants()
+
+    # GPU distributed
    
