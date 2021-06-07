@@ -251,3 +251,221 @@ class E_AttentionModule1(nn.Module): #edge attention
         a_feat = self.attn_fc(edge.data['e_f'])
         a_feat_lang = self.attn_fc_lang(edge.data['e_f_lang'])
         return {'a_feat': a_feat, 'a_feat_lang': a_feat_lang}
+
+
+class GNN(nn.Module):
+    '''
+        init    : config, multi_attn, diff_edge
+        forward : g, h_node, o_node, h_h_e_list, o_o_e_list, h_o_e_list, pop_features
+    '''
+    def __init__(self, CONFIG, multi_attn=False, diff_edge=True):
+        super(GNN, self).__init__()
+        self.diff_edge = diff_edge # false
+        self.apply_h_h_edge = H_H_EdgeApplyModule(CONFIG, multi_attn)
+        self.apply_edge_attn1 = E_AttentionModule1(CONFIG)  
+        self.apply_h_node = H_NodeApplyModule(CONFIG)
+
+    def _message_func(self, edges):
+        return {'nei_n_f': edges.src['n_f'], 'nei_n_w': edges.src['word2vec'], 'e_f': edges.data['e_f'], 'e_f_lang': edges.data['e_f_lang'], 'a_feat': edges.data['a_feat'], 'a_feat_lang': edges.data['a_feat_lang']}
+
+    def _reduce_func(self, nodes):
+        alpha = F.softmax(nodes.mailbox['a_feat'], dim=1)
+        alpha_lang = F.softmax(nodes.mailbox['a_feat_lang'], dim=1)
+
+        z_raw_f = nodes.mailbox['nei_n_f']+nodes.mailbox['e_f']
+        z_f = torch.sum( alpha * z_raw_f, dim=1)
+
+        z_raw_f_lang = nodes.mailbox['nei_n_w']
+        z_f_lang = torch.sum(alpha_lang * z_raw_f_lang, dim=1)
+         
+        # we cannot return 'alpha' for the different dimension 
+        if self.training or validation: return {'z_f': z_f, 'z_f_lang': z_f_lang}
+        else: return {'z_f': z_f, 'z_f_lang': z_f_lang, 'alpha': alpha, 'alpha_lang': alpha_lang}
+
+    def forward(self, g, h_node, o_node, h_h_e_list, o_o_e_list, h_o_e_list, pop_feat=False):
+        
+        g.apply_edges(self.apply_h_h_edge, g.edges())
+        g.apply_edges(self.apply_edge_attn1)
+        g.update_all(self._message_func, self._reduce_func)
+        g.apply_nodes(self.apply_h_node, h_node+o_node)
+
+        # !NOTE:PAY ATTENTION WHEN ADDING MORE FEATURE
+        g.ndata.pop('n_f')
+        g.ndata.pop('word2vec')
+
+        g.ndata.pop('z_f')
+        g.edata.pop('e_f')
+        g.edata.pop('a_feat')
+
+        g.ndata.pop('z_f_lang')
+        g.edata.pop('e_f_lang')
+        g.edata.pop('a_feat_lang')
+
+
+class GRNN(nn.Module):
+    '''
+    init: 
+        config, multi_attn, diff_edge
+    forward: 
+        batch_graph, batch_h_node_list, batch_obj_node_list,
+        batch_h_h_e_list, batch_o_o_e_list, batch_h_o_e_list,
+        features, spatial_features, word2vec,
+        valid, pop_features, initial_features
+    '''
+    def __init__(self, CONFIG, multi_attn=False, diff_edge=True):
+        super(GRNN, self).__init__()
+        self.multi_attn = multi_attn #false
+        self.gnn = GNN(CONFIG, multi_attn, diff_edge)
+
+    def forward(self, batch_graph, batch_h_node_list, batch_obj_node_list, batch_h_h_e_list, batch_o_o_e_list, batch_h_o_e_list, feat, spatial_feat, word2vec, valid=False, pop_feat=False, initial_feat=False):
+        
+        # !NOTE: if node_num==1, there will be something wrong to forward the attention mechanism
+        global validation 
+        validation = valid
+
+        # initialize the graph with some datas
+        batch_graph.ndata['n_f'] = feat           # node: features 
+        batch_graph.ndata['word2vec'] = word2vec  # node: words
+        batch_graph.edata['s_f'] = spatial_feat   # edge: spatial features
+
+        try:
+            self.gnn(batch_graph, batch_h_node_list, batch_obj_node_list, batch_h_h_e_list, batch_o_o_e_list, batch_h_o_e_list)
+        except Exception as e:
+            print(e)
+
+
+class Predictor(nn.Module):
+    '''
+    init    : config
+    forward : edge
+    '''
+    def __init__(self, CONFIG):
+        super(Predictor, self).__init__()
+        self.classifier = MLP(CONFIG.G_ER_L_S, CONFIG.G_ER_A, CONFIG.G_ER_B, CONFIG.G_ER_BN, CONFIG.G_ER_D)
+        self.sigmoid = nn.Sigmoid()
+
+    def forward(self, edge):
+        feat = torch.cat([edge.dst['new_n_f'], edge.dst['new_n_f_lang'], edge.data['s_f'], edge.src['new_n_f_lang'], edge.src['new_n_f']], dim=1)
+        scene_feat = torch.cat([edge.dst['new_n_f'], edge.src['new_n_f'],edge.data['s_f']], dim=1)
+        pred = self.classifier(feat)
+        # If the criterion is BCELoss, uncomment the following code ->
+        # output = self.sigmoid(output)
+        return {'pred': pred, 'scene_feat': scene_feat}
+
+
+class AGRNN(nn.Module):
+    '''
+    init    : 
+        feature_type, bias, bn, dropout, multi_attn, layer, diff_edge
+        
+    forward : 
+        node_num, features, spatial_features, word2vec, roi_label,
+        validation, choose_nodes, remove_nodes
+    '''
+    def __init__(self, bias=True, bn=True, dropout=None, multi_attn=False, layer=1, diff_edge=True, global_feat = 0):
+        super(AGRNN, self).__init__()
+ 
+        self.multi_attn = multi_attn # false
+        self.layer = layer           # 1 layer
+        self.diff_edge = diff_edge   # false
+        
+        self.CONFIG1 = CONFIGURATION(layer=1, bias=bias, bn=bn, dropout=dropout, multi_attn=multi_attn, global_feat=global_feat)
+
+        self.grnn1 = GRNN(self.CONFIG1, multi_attn=multi_attn, diff_edge=diff_edge)
+        self.edge_readout = Predictor(self.CONFIG1)
+        
+    def _collect_edge(self, node_num, roi_label, node_space, diff_edge):
+        '''
+        arguments: node_num, roi_label, node_space, diff_edge
+        '''
+        
+        # get human nodes && object nodes
+        h_node_list = np.where(roi_label == 0)[0]
+        obj_node_list = np.where(roi_label != 0)[0]
+        edge_list = []
+        
+        h_h_e_list = []
+        o_o_e_list = []
+        h_o_e_list = []
+        
+        readout_edge_list = []
+        readout_h_h_e_list = []
+        readout_h_o_e_list = []
+        
+        # get all edge in the fully-connected graph, edge_list, For node_num = 2, edge_list = [(0, 1), (1, 0)]
+        for src in range(node_num):
+            for dst in range(node_num):
+                if src == dst:
+                    continue
+                else:
+                    edge_list.append((src, dst))
+        
+        # readout_edge_list, get corresponding readout edge in the graph
+        src_box_list = np.arange(roi_label.shape[0])
+        for dst in h_node_list:
+            for src in src_box_list:
+                if src not in h_node_list:
+                    readout_edge_list.append((src, dst))
+        
+        # readout h_h_e_list, get corresponding readout h_h edges && h_o edges
+        temp_h_node_list = h_node_list[:]
+        for dst in h_node_list:
+            if dst == h_node_list.shape[0]-1:
+                continue
+            temp_h_node_list = temp_h_node_list[1:]
+            for src in temp_h_node_list:
+                if src == dst: continue
+                readout_h_h_e_list.append((src, dst))
+
+        # readout h_o_e_list
+        readout_h_o_e_list = [x for x in readout_edge_list if x not in readout_h_h_e_list]
+
+        # add node space to match the batch graph
+        h_node_list = (np.array(h_node_list)+node_space).tolist()
+        obj_node_list = (np.array(obj_node_list)+node_space).tolist()
+        
+        h_h_e_list = (np.array(h_h_e_list)+node_space).tolist() #empty no diff_edge
+        o_o_e_list = (np.array(o_o_e_list)+node_space).tolist() #empty no diff_edge
+        h_o_e_list = (np.array(h_o_e_list)+node_space).tolist() #empty no diff_edge
+
+        readout_h_h_e_list = (np.array(readout_h_h_e_list)+node_space).tolist()
+        readout_h_o_e_list = (np.array(readout_h_o_e_list)+node_space).tolist()   
+        readout_edge_list = (np.array(readout_edge_list)+node_space).tolist()
+
+        return edge_list, h_node_list, obj_node_list, h_h_e_list, o_o_e_list, h_o_e_list, readout_edge_list, readout_h_h_e_list, readout_h_o_e_list
+    
+    def _build_graph(self, node_num, roi_label, node_space, diff_edge):
+        '''
+        Declare graph, add_nodes, collect edges, add_edges
+        '''
+        graph = dgl.DGLGraph()
+        graph.add_nodes(node_num)
+
+        edge_list, h_node_list, obj_node_list, h_h_e_list, o_o_e_list, h_o_e_list, readout_edge_list, readout_h_h_e_list, readout_h_o_e_list = self._collect_edge(node_num, roi_label, node_space, diff_edge)
+        src, dst = tuple(zip(*edge_list))
+        graph.add_edges(src, dst)   # make the graph bi-directional
+
+        return graph, h_node_list, obj_node_list, h_h_e_list, o_o_e_list, h_o_e_list, readout_edge_list, readout_h_h_e_list, readout_h_o_e_list
+
+    def forward(self, node_num=None, feat=None, spatial_feat=None, word2vec=None, roi_label=None, validation=False, choose_nodes=None, remove_nodes=None):
+        
+        batch_graph, batch_h_node_list, batch_obj_node_list, batch_h_h_e_list, batch_o_o_e_list, batch_h_o_e_list, batch_readout_edge_list, batch_readout_h_h_e_list, batch_readout_h_o_e_list = [], [], [], [], [], [], [], [], []
+        node_num_cum = np.cumsum(node_num) # !IMPORTANT
+        
+        for i in range(len(node_num)):
+            # set node space
+            node_space = 0
+            if i != 0:
+                node_space = node_num_cum[i-1]
+            graph, h_node_list, obj_node_list, h_h_e_list, o_o_e_list, h_o_e_list, readout_edge_list, readout_h_h_e_list, readout_h_o_e_list = self._build_graph(node_num[i], roi_label[i], node_space, diff_edge=self.diff_edge)
+            
+            # update batch
+            batch_graph.append(graph)
+            batch_h_node_list += h_node_list
+            batch_obj_node_list += obj_node_list
+            
+            batch_h_h_e_list += h_h_e_list
+            batch_o_o_e_list += o_o_e_list
+            batch_h_o_e_list += h_o_e_list
+            
+            batch_readout_edge_list += readout_edge_list
