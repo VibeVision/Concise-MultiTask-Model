@@ -231,3 +231,240 @@ class ResNet(nn.Module):
 
         if len(replace_stride_with_dilation) != 3:
             raise ValueError("replace_stride_with_dilation should be None "
+                             "or a 3-element tuple, got {}".format(replace_stride_with_dilation))
+
+        self.groups = groups
+        self.base_width = width_per_group
+        self.conv1 = nn.Conv2d(3, self.inplanes, kernel_size=7, stride=2, padding=3,
+                               bias=False)
+        self.bn1 = norm_layer(self.inplanes)
+        self.relu = nn.ReLU(inplace=True)
+        self.maxpool = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
+        self.layer1 = self._make_layer(block, 64, layers[0])
+        self.layer2 = self._make_layer(block, 128, layers[1], stride=2,
+                                       dilate=replace_stride_with_dilation[0])
+        self.layer3 = self._make_layer(block, 256, layers[2], stride=2,
+                                       dilate=replace_stride_with_dilation[1])
+        self.layer4 = self._make_layer(block, 512, layers[3], stride=2,
+                                       dilate=replace_stride_with_dilation[2])
+        self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
+        self.fc = nn.Linear(512 * block.expansion, num_classes)
+
+        for m in self.modules():
+            if isinstance(m, nn.Conv2d):
+                nn.init.kaiming_normal_(
+                    m.weight, mode='fan_out', nonlinearity='relu')
+            elif isinstance(m, (nn.BatchNorm2d, nn.GroupNorm)):
+                nn.init.constant_(m.weight, 1)
+                nn.init.constant_(m.bias, 0)
+
+        if zero_init_residual:
+            for m in self.modules():
+                if isinstance(m, Bottleneck):
+                    nn.init.constant_(m.bn3.weight, 0)
+                elif isinstance(m, BasicBlock):
+                    nn.init.constant_(m.bn2.weight, 0)
+
+    def _make_layer(self, block: Type[Union[BasicBlock, Bottleneck]], planes: int, blocks: int,
+                    stride: int = 1, dilate: bool = False) -> nn.Sequential:
+        norm_layer = self._norm_layer
+        downsample = None
+        previous_dilation = self.dilation
+        if dilate:
+            self.dilation *= stride
+            stride = 1
+        if stride != 1 or self.inplanes != planes * block.expansion:
+            downsample = nn.Sequential(
+                conv1x1(self.inplanes, planes * block.expansion, stride),
+                norm_layer(planes * block.expansion),
+            )
+
+        layers = []
+        layers.append(block(self.inplanes, planes, stride, downsample, self.groups,
+                            self.base_width, previous_dilation, norm_layer))
+        self.inplanes = planes * block.expansion
+        for _ in range(1, blocks):
+            layers.append(block(self.inplanes, planes, groups=self.groups,
+                                base_width=self.base_width, dilation=self.dilation,
+                                norm_layer=norm_layer))
+
+        return nn.Sequential(*layers)
+
+
+    def _forward_impl(self, x) -> Tensor:
+        x = self.conv1(x)
+        x = self.bn1(x)
+        x = self.relu(x)
+        x = self.maxpool(x)
+
+        c1 = self.layer1(x)
+        c2 = self.layer2(c1)
+        c3 = self.layer3(c2)
+        c4 = self.layer4(c3)
+
+        return c1, c2, c3, c4
+ 
+
+    def forward(self, x: Tensor) -> Tensor:
+        return self._forward_impl(x)
+
+
+class BaseNet(nn.Module):
+    """
+    BaseNet class for Multi-scale global reasoned segmentation module
+
+    init    : 
+        block, layers, num_classes (ImageNet), zero_init_residual, groups, width_per_group, replace_stride_with_dilation, norm_layer
+        
+    forward : x
+
+    """
+    def __init__(self, nclass, backbone, pretrained, dilated=True, norm_layer=None,
+                root='~/.encoding/models', *args, **kwargs):
+        super(BaseNet, self).__init__()
+        self.nclass = nclass
+
+        # Copying modules from pretrained models
+        self.backbone = backbone
+        self.pretrained = get_backbone(backbone, pretrained=pretrained, dilated=dilated,
+                                       norm_layer=norm_layer, root=root,
+                                       *args, **kwargs)
+        self.pretrained.fc = None
+        self._up_kwargs = up_kwargs
+
+    def base_forward(self, x):
+
+        x = self.pretrained.conv1(x)
+        x = self.pretrained.bn1(x)
+        x = self.pretrained.relu(x)
+        x = self.pretrained.maxpool(x)
+        c = self.pretrained.layer1(x)
+        c = self.pretrained.layer2(c)
+        c = self.pretrained.layer3(c)
+        c = self.pretrained.layer4(c)
+
+        return None, None, None, c
+
+    def evaluate(self, x, target=None):
+        pred = self.forward(x)
+        if isinstance(pred, (tuple, list)):
+            pred = pred[0]
+        if target is None:
+            return pred
+        correct, labeled = batch_pix_accuracy(pred.data, target.data)
+        inter, union = batch_intersection_union(
+            pred.data, target.data, self.nclass)
+        return correct, labeled, inter, union
+
+
+def _resnet(
+    arch: str,
+    block: Type[Union[BasicBlock, Bottleneck]],
+    layers: List[int],
+    pretrained: bool,
+    progress: bool,
+    **kwargs: Any
+    ) -> ResNet:
+
+    """
+    ResNet model function to load pre-trained model: Class call
+    init    : 
+        arch, block, layers, pretrained, progress, **kwargs
+        
+    forward : x
+    """
+
+    model = ResNet(block, layers, **kwargs)
+    if pretrained:
+        print("Loading pre-trained ImageNet weights")
+        state_dict = torch.load('models/r18/resnet18-f37072fd.pth')
+        model.load_state_dict(state_dict)
+    return model
+
+
+def resnet18(pretrained: bool = True, progress: bool = True, **kwargs: Any) -> ResNet:
+    """
+    ResNet18 model call function
+    Inputs: pretrained, progress, **kwargs
+
+    """
+    return _resnet('resnet18', BasicBlock, [2, 2, 2, 2], pretrained, progress,
+                   **kwargs)
+
+class Resnet18_main(nn.Module):
+    """
+    ResNet main function for feature extractor
+    init    : pretrained, num_classes
+    forward : x
+    """
+    def __init__(self, pretrained, num_classes=1000):
+
+        super(Resnet18_main, self).__init__()
+        resnet18_block = resnet18(
+            pretrained=pretrained)
+
+        resnet18_block.fc = nn.Conv2d(resnet18_block.inplanes, num_classes, 1)
+
+        self.resnet18_block = resnet18_block
+        self._normal_initialization(self.resnet18_block.fc)
+
+        self.in_planes = 64
+        self.kernel_size = 3
+
+
+    def _normal_initialization(self, layer):
+
+        layer.weight.data.normal_(0, 0.01)
+        layer.bias.data.zero_()
+
+    def forward(self, x):      
+        c1, c2, c3, c4 = self.resnet18_block(x)
+ 
+        return c1, c2, c3, c4
+
+
+class GCN(nn.Module):
+    """
+    Graph Convolution network for Global interaction space 
+    init    : 
+        num_state, num_node, bias=False
+        
+    forward : x, scene_feat = None, model_type = None
+
+    """
+    def __init__(self, num_state, num_node, bias=False):
+        super(GCN, self).__init__()
+        self.conv1 = nn.Conv1d(num_node, num_node, kernel_size=1, padding=0,
+                               stride=1, groups=1, bias=True)
+        self.relu = nn.ReLU(inplace=True)
+        self.conv2 = nn.Conv1d(num_state, num_state, kernel_size=1, padding=0,
+                               stride=1, groups=1, bias=bias)
+        self.x_avg_pool = nn.AvgPool1d(128,1)
+
+    def forward(self, x, scene_feat = None, model_type = None):
+        h = self.conv1(x.permute(0, 2, 1).contiguous()).permute(0, 2, 1)
+
+        if (model_type == 'amtl-t1' or model_type == 'mtl-t1') and scene_feat is not None:    # (x+h+(avg(x)*f))
+            x_p = torch.matmul(self.x_avg_pool(x.permute(0, 2, 1).contiguous()), scene_feat)
+            h = h + x + x_p.permute(0, 2, 1).contiguous()
+        else:
+            h = h + x
+        
+        h = self.relu(h)
+        h = self.conv2(h)
+
+        return h
+
+
+class GloRe_Unit(nn.Module):
+    """
+    Global Reasoning Unit (GR/GloRe)
+    init    : 
+        num_in, num_mid, stride=(1, 1), kernel=1
+        
+    forward : x, scene_feat = None, model_type = None
+    AMTL - Sequential MTL Optimisation
+    MTL - Naive MTL Optimisation
+
+    """    
+    def __init__(self, num_in, num_mid, stride=(1, 1), kernel=1):
