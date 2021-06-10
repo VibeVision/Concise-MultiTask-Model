@@ -469,3 +469,20 @@ class AGRNN(nn.Module):
             batch_h_o_e_list += h_o_e_list
             
             batch_readout_edge_list += readout_edge_list
+            batch_readout_h_h_e_list += readout_h_h_e_list
+            batch_readout_h_o_e_list += readout_h_o_e_list
+        
+        batch_graph = dgl.batch(batch_graph)
+        
+        # GRNN
+        self.grnn1(batch_graph, batch_h_node_list, batch_obj_node_list, batch_h_h_e_list, batch_o_o_e_list, batch_h_o_e_list, feat, spatial_feat, word2vec, validation, initial_feat=True)
+        batch_graph.apply_edges(self.edge_readout, tuple(zip(*(batch_readout_h_o_e_list+batch_readout_h_h_e_list))))
+        
+        if self.training or validation:
+            # !NOTE: cannot use "batch_readout_h_o_e_list+batch_readout_h_h_e_list" because of the wrong order
+            return batch_graph.edges[tuple(zip(*batch_readout_edge_list))].data['pred'], \
+                    batch_graph.edges[tuple(zip(*batch_readout_edge_list))].data['scene_feat']
+        else:
+            return batch_graph.edges[tuple(zip(*batch_readout_edge_list))].data['pred'], \
+                   batch_graph.nodes[batch_h_node_list].data['alpha'], \
+                   batch_graph.nodes[batch_h_node_list].data['alpha_lang'] 
