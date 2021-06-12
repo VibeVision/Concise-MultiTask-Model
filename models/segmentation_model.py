@@ -468,3 +468,206 @@ class GloRe_Unit(nn.Module):
 
     """    
     def __init__(self, num_in, num_mid, stride=(1, 1), kernel=1):
+        super(GloRe_Unit, self).__init__()
+
+        self.num_s = int(2 * num_mid)
+        self.num_n = int(1 * num_mid)
+
+        kernel_size = (kernel, kernel)
+        padding = (1, 1) if kernel == 3 else (0, 0)
+
+        # Reduce dimension
+        self.conv_state = nn.Conv2d(num_in, self.num_s, kernel_size=kernel_size, padding=padding)
+        # generate graph transformation function
+        self.conv_proj = nn.Conv2d(num_in, self.num_n, kernel_size=kernel_size, padding=padding)
+        # ----------
+        self.gcn = GCN(num_state=self.num_s, num_node=self.num_n)
+        # ----------
+        # tail: extend dimension
+        self.fc_2 = nn.Conv2d(self.num_s, num_in, kernel_size=kernel_size, padding=padding, stride=(1, 1),groups=1, bias=False)
+
+        self.blocker = nn.BatchNorm2d(num_in)
+
+    def forward(self, x, scene_feat = None, model_type = None):
+        '''
+        Parameter x dimension : (N, C, H, W)
+        '''
+        batch_size = x.size(0)
+        x_state_reshaped = self.conv_state(x).view(batch_size, self.num_s, -1)
+        x_proj_reshaped = self.conv_proj(x).view(batch_size, self.num_n, -1)
+        x_rproj_reshaped = x_proj_reshaped
+
+        # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+        # Projection: Coordinate space -> Interaction space
+        x_n_state = torch.matmul( x_state_reshaped, x_proj_reshaped.permute(0, 2, 1))
+        x_n_state = x_n_state * (1. / x_state_reshaped.size(2))
+
+        if model_type == 'amtl-t2' or model_type == 'mtl-t2':
+            x_n_rel = torch.matmul(x_n_state.permute(0, 2, 1).contiguous(), scene_feat).permute(0, 2, 1)                 
+        else:
+            x_n_rel = self.gcn(x_n_state, scene_feat, model_type)
+
+        out2 = None
+        if model_type == 'amtl-t3' or model_type == 'mtl-t3':
+            out2 = x_n_rel
+        
+        # Reverse projection: Interaction space -> Coordinate space
+        x_state_reshaped = torch.matmul(x_n_rel, x_rproj_reshaped)
+
+        # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+        x_state = x_state_reshaped.view(batch_size, self.num_s, *x.size()[2:])
+        out = x + self.blocker(self.fc_2(x_state))
+        
+        return out, out2
+
+
+class GR_Decoder(nn.Module):
+    """
+    Multi-scale Global Reasoned (GR) Decoder for Feature Aggregation 
+    init    : 
+        in_channels, out_channels, norm_layer
+        
+    forward : s4, s1 = None, s2 = None, s3 = None, imsize = None, seg_mode = None 
+    
+    -> s1-s4 are Scale-specific features
+    -> out_channels = num_classes (8)
+    -> seg_mode : V1 (MSLRGR - multi-scale local reasoning and global reasoning) 
+                  V2GC (MSLR - multi-scale local reasoning) 
+    """   
+    def __init__(self, in_channels, out_channels, norm_layer):
+        super(GR_Decoder, self).__init__()
+
+        # Scale-specific channel dimensions 
+        inter_channels = in_channels // 2 # 256
+        c2 = inter_channels // 2 # 128
+        c1 = c2 // 2 # 64
+
+        # Scale-specific decoder layers with simple Conv-BN-ReLU-Dropout-Conv Block
+        self.s1_layer = nn.Sequential(nn.Sequential(nn.Conv2d(c1, c1, 3, padding=1, bias=False), norm_layer(c1), nn.ReLU()),
+                                     nn.Sequential(nn.Dropout2d(0.1), nn.Conv2d(c1, out_channels, 1)))    
+
+        self.s2_layer = nn.Sequential(nn.Sequential(nn.Conv2d(c2, c2, 3, padding=1, bias=False), norm_layer(c2), nn.ReLU()),
+                                     nn.Sequential(nn.Dropout2d(0.1), nn.Conv2d(c2, out_channels, 1))) 
+        
+        self.s3_layer = nn.Sequential(nn.Sequential(nn.Conv2d(inter_channels, inter_channels, 3, padding=1, bias=False), norm_layer(inter_channels), nn.ReLU()),
+                                     nn.Sequential(nn.Dropout2d(0.1), nn.Conv2d(inter_channels, out_channels, 1)))
+        
+        self.s4_decoder = nn.Sequential(nn.Sequential(nn.Conv2d(inter_channels, inter_channels, 3, padding=1, bias=False), norm_layer(inter_channels), nn.ReLU()),
+                                     nn.Sequential(nn.Dropout2d(0.1), nn.Conv2d(256, out_channels, 1)))
+
+
+    def forward(self, x, s1 = None, s2 = None, s3 = None, imsize = None, seg_mode = None):
+        x = list(tuple([self.s4_decoder(x)]))
+        outputs = []
+        for i in range(len(x)):
+            outputs.append(
+                interpolate(x[i], imsize, mode='bilinear', align_corners=True))
+        
+        # V1 and V2_GC are Segmentation modes, MSLRGR and MSGR Respectively
+        if seg_mode == 'v2_gc' or seg_mode == 'v1':
+            s1 = interpolate(self.s1_layer(s1), imsize, mode='bilinear', align_corners=True)
+            s2 = interpolate(self.s2_layer(s2), imsize, mode='bilinear', align_corners=True)
+            s3 = interpolate(self.s3_layer(s3), imsize, mode='bilinear', align_corners=True)
+            outputs = outputs[0] 
+            outputs = s1 + s2 + s3 + outputs  
+            return outputs
+        else:
+            return tuple(outputs)[0]
+
+
+class GR_Segmentation(BaseNet):
+    """
+    Global-Reasoned (GR) Segmentation module INITIALISATION 
+    init    : 
+        nclass, backbone, aux=False, se_loss=False, norm_layer=nn.BatchNorm2d, gcn_search=None, **kwargs
+        
+    forward : x (Not used in MTL forward pass)
+
+    """   
+    def __init__(self, nclass, backbone, pretrained, aux=False, se_loss=False, norm_layer=nn.BatchNorm2d, gcn_search=None, **kwargs):
+        super(GR_Segmentation, self).__init__(nclass, backbone, pretrained, norm_layer=norm_layer, **kwargs)
+
+        in_channels = 512
+
+        # GR module
+        self.gr_interaction = GR_module(in_channels, nclass, norm_layer, gcn_search)
+
+        # GR decoder
+        self.gr_decoder = GR_Decoder(in_channels, nclass, norm_layer)
+
+    # !NOTE: - In the MTL forward pass, this forward function is NOT USED !!!!!!!!!!!!!!!!
+
+    def forward(self, x):
+        imsize = x.size()[2:]
+
+        # Encoder module
+        s1, s2, s3, s4 = self.base_forward(x)
+
+        # GCN with 1 conv block to bridge to GloRE Unit
+        x = self.gr_interaction(c4)
+
+        # Decoder module
+        x = self.gr_decoder(x, imsize)
+        return x
+
+
+class GR_module(nn.Module):
+    """
+    Multi-scale Global Reasoning (GR) Unit
+    init    : 
+        in_channels, out_channels, norm_layer, gcn_search
+        
+    forward : x, s1 = None, s2 = None, s3 = None, scene_feat = None, seg_mode = None, model_type = None
+    -> s1-s4 are Scale-specific features
+    -> out_channels = num_classes (8)
+    -> seg_mode : V1 (MSLRGR - multi-scale local reasoning and global reasoning) 
+                  V2GC (MSLR - multi-scale local reasoning) 
+
+    """ 
+    def __init__(self, in_channels, out_channels, norm_layer, gcn_search):
+        super(GR_module, self).__init__()
+
+        inter_channels = in_channels // 2 # 256
+        c2 = inter_channels // 2 # 128
+        c1 = c2 // 2 # 64
+
+        # Simple Conv-BN-ReLU Block
+        self.conv_s4 = nn.Sequential(nn.Conv2d(in_channels, inter_channels, 3, padding=1, bias=False), norm_layer(inter_channels), nn.ReLU())
+
+        # Scale-specific GR unit (GloRE)
+        self.gcn1 = GloRe_Unit(c1, 64, kernel=1)
+        self.gcn2 = GloRe_Unit(c2, 64, kernel=1)
+        self.gcn3 = GloRe_Unit(inter_channels, 64, kernel=1)
+        self.gcn4 = GloRe_Unit(inter_channels, 64, kernel=1)
+
+    def forward(self, x, s1 = None, s2 = None, s3 = None, scene_feat = None, seg_mode = None, model_type = None):
+        
+        feat1 = None
+        feat2 = None
+        feat3 = None
+        feat5 = None
+
+        if seg_mode == 'v2_gc': # MODE - MSGR
+            feat1, _ = self.gcn1(s1, scene_feat)  
+            feat2, _ = self.gcn2(s2, scene_feat)       
+            feat3, _ = self.gcn3(s3, scene_feat)  
+            feat4, feat5 = self.gcn4(self.conv_s4(x), scene_feat, model_type) 
+        
+        elif seg_mode == 'v1': # MODE - MSLRGR
+            feat1, feat2, feat3 = s1, s2, s3
+            feat4, feat5 = self.gcn4(self.conv_s4(x), scene_feat, model_type)
+
+        else:
+            feat4, feat5 = self.gcn4(self.conv_s4(x), scene_feat, model_type)
+        
+        return feat1, feat2, feat3, feat4, feat5
+
+def resnet18_model(pretrained=True, root='~/.encoding/models', **kwargs):
+    model = Resnet18_main(pretrained, num_classes=8)
+    return model
+
+
+def get_gcnet(dataset='endovis18', backbone='resnet18_model', num_classes=8, pretrained=False, root='./pretrain_models', **kwargs):
+    model = GR_Segmentation(nclass=num_classes, backbone=backbone, pretrained=pretrained, root=root, **kwargs)
+    return model
