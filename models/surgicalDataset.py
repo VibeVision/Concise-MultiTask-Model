@@ -16,4 +16,12 @@ import numpy as np
 from glob import glob
 from PIL import Image
 
-i
+import torch
+import torch.nn as nn
+import torchvision.transforms as transforms
+from torch.utils.data import Dataset
+
+
+class SurgicalSceneConstants():
+    '''
+    Set the instrument classes and action classes, with path to
