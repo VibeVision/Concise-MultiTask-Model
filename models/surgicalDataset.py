@@ -24,4 +24,8 @@ from torch.utils.data import Dataset
 
 class SurgicalSceneConstants():
     '''
-    Set the instrument classes and action classes, with path to
+    Set the instrument classes and action classes, with path to XML and Word2Vec Features (if applicable)
+    '''
+    def __init__(self):
+        self.instrument_classes = ('kidney', 'bipolar_forceps', 'prograsp_forceps', 'large_needle_driver',
+                             
