@@ -31,4 +31,6 @@ class SurgicalSceneConstants():
                                    'monopolar_curved_scissors', 'ultrasound_probe', 'suction', 'clip_applier',
                                    'stapler', 'maryland_dissector', 'spatulated_monopolar_cautery')
 
-        self.action_classes 
+        self.action_classes = ('Idle', 'Grasping', 'Retraction', 'Tissue_Manipulation',
+                               'Tool_Manipulation', 'Cutting', 'Cauterization',
+                               'Suction', 'Looping', 'Suturing
