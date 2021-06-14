@@ -28,4 +28,7 @@ class SurgicalSceneConstants():
     '''
     def __init__(self):
         self.instrument_classes = ('kidney', 'bipolar_forceps', 'prograsp_forceps', 'large_needle_driver',
-                             
+                                   'monopolar_curved_scissors', 'ultrasound_probe', 'suction', 'clip_applier',
+                                   'stapler', 'maryland_dissector', 'spatulated_monopolar_cautery')
+
+        self.action_classes 
