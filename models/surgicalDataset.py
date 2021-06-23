@@ -33,4 +33,11 @@ class SurgicalSceneConstants():
 
         self.action_classes = ('Idle', 'Grasping', 'Retraction', 'Tissue_Manipulation',
                                'Tool_Manipulation', 'Cutting', 'Cauterization',
-                               'Suction', 'Looping', 'Suturing
+                               'Suction', 'Looping', 'Suturing', 'Clipping', 'Staple',
+                               'Ultrasound_Sensing')
+
+        self.xml_data_dir = 'dataset/instruments18/seq_'
+        self.word2vec_loc = 'dataset/surgicalscene_word2vec.hdf5'
+
+
+class S
