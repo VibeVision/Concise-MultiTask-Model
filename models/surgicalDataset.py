@@ -43,4 +43,10 @@ class SurgicalSceneConstants():
 class SurgicalSceneDataset(Dataset):
     '''
     Dataset class for the MTL Model
-    Inputs: sequence set, data directory (root), image directory, mask directory, augmentation flag (istrain), dataset (dset), feature extracto
+    Inputs: sequence set, data directory (root), image directory, mask directory, augmentation flag (istrain), dataset (dset), feature extractor chosen
+    '''
+    def __init__(self, seq_set, data_dir, img_dir, mask_dir, istrain, dset, dataconst, feature_extractor, reduce_size=False):
+
+        self.data_size = 143
+        self.dataconst = dataconst
+        
