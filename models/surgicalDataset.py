@@ -40,4 +40,7 @@ class SurgicalSceneConstants():
         self.word2vec_loc = 'dataset/surgicalscene_word2vec.hdf5'
 
 
-class S
+class SurgicalSceneDataset(Dataset):
+    '''
+    Dataset class for the MTL Model
+    Inputs: sequence set, data directory (root), image directory, mask directory, augmentation flag (istrain), dataset (dset), feature extracto
