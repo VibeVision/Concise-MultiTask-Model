@@ -49,4 +49,10 @@ class SurgicalSceneDataset(Dataset):
 
         self.data_size = 143
         self.dataconst = dataconst
-        
+        self.img_dir = img_dir
+        self.mask_dir = mask_dir
+        self.is_train = istrain
+        self.feature_extractor = feature_extractor
+        self.reduce_size = reduce_size
+
+        # Images and masks are resized 
