@@ -62,4 +62,8 @@ class SurgicalSceneDataset(Dataset):
         self.dset = []
 
         for domain in range(len(seq_set)):
-            domain_dir_list = 
+            domain_dir_list = []
+            for i in seq_set[domain]:
+                xml_dir_temp = data_dir[domain] + str(i) + '/xml/'
+                domain_dir_list = domain_dir_list + glob(xml_dir_temp + '/*.xml')
+            if self.reduc
