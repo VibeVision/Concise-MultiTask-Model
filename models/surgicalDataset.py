@@ -66,4 +66,8 @@ class SurgicalSceneDataset(Dataset):
             for i in seq_set[domain]:
                 xml_dir_temp = data_dir[domain] + str(i) + '/xml/'
                 domain_dir_list = domain_dir_list + glob(xml_dir_temp + '/*.xml')
-            if self.reduc
+            if self.reduce_size:
+                indices = np.random.permutation(len(domain_dir_list))
+                domain_dir_list = [domain_dir_list[j] for j in indices[0:self.data_size]]
+            for file in domain_dir_list:
+              
