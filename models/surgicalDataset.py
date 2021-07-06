@@ -55,4 +55,11 @@ class SurgicalSceneDataset(Dataset):
         self.feature_extractor = feature_extractor
         self.reduce_size = reduce_size
 
-        # Images and masks are resized 
+        # Images and masks are resized to (320, 400)
+        self.resizer = transforms.Compose([transforms.Resize((320, 400))]) 
+
+        self.xml_dir_list = []
+        self.dset = []
+
+        for domain in range(len(seq_set)):
+            domain_dir_list = 
