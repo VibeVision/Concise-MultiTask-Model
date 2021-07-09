@@ -70,4 +70,9 @@ class SurgicalSceneDataset(Dataset):
                 indices = np.random.permutation(len(domain_dir_list))
                 domain_dir_list = [domain_dir_list[j] for j in indices[0:self.data_size]]
             for file in domain_dir_list:
-              
+                self.xml_dir_list.append(file)
+                self.dset.append(dset[domain])
+        self.word2vec = h5py.File('dataset/surgicalscene_word2vec.hdf5', 'r')
+
+    # Word2Vec function
+    def _get_word2vec(self, node_ids, sg
