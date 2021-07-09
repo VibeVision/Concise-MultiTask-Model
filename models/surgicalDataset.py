@@ -75,4 +75,10 @@ class SurgicalSceneDataset(Dataset):
         self.word2vec = h5py.File('dataset/surgicalscene_word2vec.hdf5', 'r')
 
     # Word2Vec function
-    def _get_word2vec(self, node_ids, sg
+    def _get_word2vec(self, node_ids, sgh=0):
+        word2vec = np.empty((0, 300))
+        for node_id in node_ids:
+            if sgh == 1 and node_id == 0:
+                vec = self.word2vec['tissue']
+            else:
+                vec = self.word2vec[s
