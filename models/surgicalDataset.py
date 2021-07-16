@@ -81,4 +81,12 @@ class SurgicalSceneDataset(Dataset):
             if sgh == 1 and node_id == 0:
                 vec = self.word2vec['tissue']
             else:
-                vec = self.word2vec[s
+                vec = self.word2vec[self.dataconst.instrument_classes[node_id]]
+            word2vec = np.vstack((word2vec, vec))
+        return word2vec
+
+    # Dataset length
+    def __len__(self):
+        return len(self.xml_dir_list)
+
+    # Function to
