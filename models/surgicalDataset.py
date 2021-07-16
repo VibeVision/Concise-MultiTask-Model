@@ -89,4 +89,9 @@ class SurgicalSceneDataset(Dataset):
     def __len__(self):
         return len(self.xml_dir_list)
 
-    # Function to
+    # Function to get images and masks 
+    def __getitem__(self, idx):
+
+        file_name = os.path.splitext(os.path.basename(self.xml_dir_list[idx]))[0]
+        file_root = os.path.dirname(os.path.dirname(self.xml_dir_list[idx]))
+        if l
