@@ -94,4 +94,9 @@ class SurgicalSceneDataset(Dataset):
 
         file_name = os.path.splitext(os.path.basename(self.xml_dir_list[idx]))[0]
         file_root = os.path.dirname(os.path.dirname(self.xml_dir_list[idx]))
-        if l
+        if len(self.img_dir) == 1:
+            _img_loc = os.path.join(file_root+self.img_dir[0] + file_name + '.png')
+            _mask_loc = os.path.join(file_root+self.mask_dir[0] + file_name + '.png')
+
+        else:
+            _img_loc = os.path.join( file_roo
