@@ -104,4 +104,11 @@ class SurgicalSceneDataset(Dataset):
 
 
         _img = Image.open(_img_loc).convert('RGB')
-        _ta
+        _target = Image.open(_mask_loc)
+
+        if self.is_train:
+            isAugment = random.random() < 0.5
+            if isAugment:
+                isHflip = random.random() < 0.5
+                if isHflip:
+                   
