@@ -99,4 +99,9 @@ class SurgicalSceneDataset(Dataset):
             _mask_loc = os.path.join(file_root+self.mask_dir[0] + file_name + '.png')
 
         else:
-            _img_loc = os.path.join( file_roo
+            _img_loc = os.path.join( file_root+self.img_dir[self.dset[idx]] + file_name + '.png')
+            _mask_loc = os.path.join( file_root+self.mask_dir[self.dset[idx]] + file_name + '.png')
+
+
+        _img = Image.open(_img_loc).convert('RGB')
+        _ta
