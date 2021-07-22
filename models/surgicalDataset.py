@@ -111,4 +111,8 @@ class SurgicalSceneDataset(Dataset):
             if isAugment:
                 isHflip = random.random() < 0.5
                 if isHflip:
-                   
+                    _img = _img.transpose(Image.FLIP_LEFT_RIGHT)
+                    _target = _target.transpose(Image.FLIP_LEFT_RIGHT)
+                else:
+                    _img = _img.transpose(Image.FLIP_TOP_BOTTOM)
+                  
