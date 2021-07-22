@@ -115,4 +115,8 @@ class SurgicalSceneDataset(Dataset):
                     _target = _target.transpose(Image.FLIP_LEFT_RIGHT)
                 else:
                     _img = _img.transpose(Image.FLIP_TOP_BOTTOM)
-                  
+                    _target = _target.transpose(Image.FLIP_TOP_BOTTOM)
+
+        _img = np.asarray(_img, np.float32) * 1.0 / 255
+        _img = torch.from_numpy(np.array(_img).transpose(2, 0, 1)).float()
+        _target = torch.from_numpy(np.a
