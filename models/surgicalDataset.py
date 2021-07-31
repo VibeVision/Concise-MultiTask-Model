@@ -119,4 +119,10 @@ class SurgicalSceneDataset(Dataset):
 
         _img = np.asarray(_img, np.float32) * 1.0 / 255
         _img = torch.from_numpy(np.array(_img).transpose(2, 0, 1)).float()
-        _target = torch.from_numpy(np.a
+        _target = torch.from_numpy(np.array(_target)).long()
+
+        frame_data = h5py.File(os.path.join( file_root+'/vsgat/'+self.feature_extractor+'/'+ file_name + '_features.hdf5'), 'r')
+        
+        data = {}
+
+        data['img_name'] = frame_data['img_na
