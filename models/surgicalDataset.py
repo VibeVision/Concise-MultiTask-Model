@@ -133,4 +133,9 @@ class SurgicalSceneDataset(Dataset):
         data['mask'] = self.resizer(_target.unsqueeze(0))
         
         
-      
+        data['node_num'] = frame_data['node_num'][()]
+        data['roi_labels'] = frame_data['classes'][:]
+        data['det_boxes'] = frame_data['boxes'][:]
+
+        data['edge_labels'] = frame_data['edge_labels'][:]
+        
