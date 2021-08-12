@@ -125,4 +125,12 @@ class SurgicalSceneDataset(Dataset):
         
         data = {}
 
-        data['img_name'] = frame_data['img_na
+        data['img_name'] = frame_data['img_name'][()][:] + '.jpg'
+        data['img_loc'] = _img_loc
+
+        # segmentation
+        data['img'] = self.resizer(_img.unsqueeze(0))
+        data['mask'] = self.resizer(_target.unsqueeze(0))
+        
+        
+      
