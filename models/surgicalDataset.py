@@ -138,4 +138,9 @@ class SurgicalSceneDataset(Dataset):
         data['det_boxes'] = frame_data['boxes'][:]
 
         data['edge_labels'] = frame_data['edge_labels'][:]
-        
+        data['edge_num'] = data['edge_labels'].shape[0]
+
+        data['features'] = frame_data['node_features'][:]
+        data['spatial_feat'] = frame_data['spatial_features'][:]
+
+        data['word2vec'] = self._
