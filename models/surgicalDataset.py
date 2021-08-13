@@ -143,4 +143,11 @@ class SurgicalSceneDataset(Dataset):
         data['features'] = frame_data['node_features'][:]
         data['spatial_feat'] = frame_data['spatial_features'][:]
 
-        data['word2vec'] = self._
+        data['word2vec'] = self._get_word2vec(data['roi_labels'], self.dset[idx])
+        return data
+
+
+# For Dataset Loader
+def collate_fn(batch):
+    '''
+        Default collate_fn(): https://github.com/pytorch/pytorch/blob/1d53d0756668ce641e4f109200d9c65b003d05fa/torch/utils/data/_u
