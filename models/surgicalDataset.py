@@ -159,4 +159,10 @@ def collate_fn(batch):
     batch_data['img'] = []
     batch_data['mask'] = []
     batch_data['node_num'] = []
-  
+    batch_data['roi_labels'] = []
+    batch_data['det_boxes'] = []
+    batch_data['edge_labels'] = []
+    batch_data['edge_num'] = []
+    batch_data['features'] = []
+    batch_data['spatial_feat'] = []
+    batch_data['word2ve
