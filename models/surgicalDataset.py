@@ -165,4 +165,10 @@ def collate_fn(batch):
     batch_data['edge_num'] = []
     batch_data['features'] = []
     batch_data['spatial_feat'] = []
-    batch_data['word2ve
+    batch_data['word2vec'] = []
+
+    for data in batch:
+        batch_data['img_name'].append(data['img_name'])
+        batch_data['img_loc'].append(data['img_loc'])
+        batch_data['img'].append(data['img'])
+        batch_data['mask'].ap
