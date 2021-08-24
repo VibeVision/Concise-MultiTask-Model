@@ -171,4 +171,8 @@ def collate_fn(batch):
         batch_data['img_name'].append(data['img_name'])
         batch_data['img_loc'].append(data['img_loc'])
         batch_data['img'].append(data['img'])
-        batch_data['mask'].ap
+        batch_data['mask'].append(data['mask'])
+        batch_data['node_num'].append(data['node_num'])
+        batch_data['roi_labels'].append(data['roi_labels'])
+        batch_data['det_boxes'].append(data['det_boxes'])
+        batch_data['edg
