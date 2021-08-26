@@ -19,3 +19,212 @@
 4) AMTL-T3-S                                : Best SC ACC: [Epoch: 108 value: 0.6641] Best SC mAP: [Epoch: 130 value: 0.3029] Best Seg mIuU: [Epoch: 1 value: 0.3926]
 5) AMTL-T3-SV1                              : Best SC ACC: [Epoch: 126 value: 0.6848] Best SC mAP: [Epoch: 117 value: 0.3029] Best Seg mIuU: [Epoch: 1 value: 0.4354]
 6) AMTL-T3-SV2GC                            : Best SC ACC: [Epoch: 100 value: 0.6770] Best SC mAP: [Epoch: 100 value: 0.3062] Best Seg mIuU: [Epoch: 1 value: 0.4350]
+7) AMTL-T3G-SV1                             : Best SC ACC: [Epoch: 116 value: 0.6994] Best SC mAP: [Epoch: 127 value: 0.3246] Best Seg mIuU: [Epoch: 1 value: 0.4354]
+8) AMTL-T3G-SV2GC                           : Best SC ACC: [Epoch:  57 value: 0.6873] Best SC mAP: [Epoch: 108 value: 0.2963] Best Seg mIuU: [Epoch: 1 value: 0.4350]
+
+
+                                                       MTL model
+1) MTL-T0-S                                 : 
+2) MTL-T0-SV1
+3) MTL-T1-SV1
+4) MTL-T2-SV1
+5) MTL-T3G-SV1
+
+
+
+                                                       MTL-KD
+1) MTL-KD-T0-S      (0.4 * SG) + + S + ds   : Best SC ACC: [Epoch: 57 value: 0.6615] Best SC mAP: [Epoch: 48 value: 0.2640] Best Seg mIuU: [Epoch: 71 value: 0.3730]
+2) MTL-KD-T0-SV1
+3) MTL-KD-T1-SV1
+4) MTL-KD-T2-SV1
+5) MTL-KD-T3G-SV1
+
+
+stl-s-v3: attn(GIU)           SV3          : Best SC ACC: [Epoch: 6 value: 0.2455] Best SC mAP: [Epoch: 4 value: 0.0689] Best Seg mIuU: [Epoch: 88 value: 0.3826]
+stl-s-v4: attn(glore)         SV4          : Best SC ACC: [Epoch: 1 value: 0.1731] Best SC mAP: [Epoch: 1 value: 0.1055] Best Seg mIuU: [Epoch: 87 value: 0.3753]
+stl-s-v5: attn(128)           SV5          : Best SC ACC: [Epoch: 1 value: 0.0560] Best SC mAP: [Epoch: 32 value: 0.1172] Best Seg mIuU: [Epoch: 52 value: 0.3758]
+stl-s-v6: attn(64)            SV6          : Best SC ACC: [Epoch: 1 value: 0.0052] Best SC mAP: [Epoch: 7 value: 0.0616] Best Seg mIuU: [Epoch: 62 value: 0.3702]
+
+                                                       
+###############################################################################################################################################
+                                                        Other results:
+2) STL-SEG-NoGlore      OPT 0.004           : Best SC ACC: [Epoch:   2 value: 0.0129] Best SC mAP: [Epoch:  98 value: 0.0982] Best Seg mIuU: [Epoch: 67 value: 0.4070]
+2) STL-SEG              OPT 0.004           : Best SC ACC: [Epoch:  41 value: 0.0551] Best SC mAP: [Epoch:  13 value: 0.0688] Best Seg mIuU: [Epoch:100 value: 0.3951]
+4) STL-SEG-V1_v2        OPT 0.004           : Best SC ACC: [Epoch:   0 value: 0.0000] Best SC mAP: [Epoch:  33 value: 0.0959] Best Seg mIuU: [Epoch: 81 value: 0.4439]
+6) STL-SEG-V2GC_v2      OPT 0.004           : Best SC ACC: [Epoch:  65 value: 0.0301] Best SC mAP: [Epoch:  64 value: 0.0928] Best Seg mIuU: [Epoch: 96 value: 0.4384]
+8) STL-SEG-V2CGC_v2     OPT 0.004           : Best SC ACC: [Epoch:  20 value: 0.2274] Best SC mAP: [Epoch:  66 value: 0.0851] Best Seg mIuU: [Epoch: 69 value: 0.4363]
+3) MTL-T0-SEGV1         OPTOPT              : Best SC ACC: [Epoch:  55 value: 0.5624] Best SC mAP: [Epoch:  41 value: 0.2097] Best Seg mIuU: [Epoch: 14 value: 0.4246] stopped at 66
+4) MTL-T0-SEGv2GC       OPTOPT              : Best SC ACC: [Epoch:  24 value: 0.5599] Best SC mAP: [Epoch:  57 value: 0.2206] Best Seg mIuU: [Epoch: 53 value: 0.4314] stopped at 66
+2) AMTL-T0-SV1-NMS                          : Best SC ACC: [Epoch: 114 value: 0.6856] Best SC mAP: [Epoch: 114 value: 0.2970] Best Seg mIuU: [Epoch:  1 value: 0.4354]
+4) AMTL-T0-SV2GC-NMS                        : Best SC ACC: [Epoch:  76 value: 0.6873] Best SC mAP: [Epoch:  95 value: 0.2977] Best Seg mIuU: [Epoch:  1 value: 0.4350]
+3) AMTL-T3G-SV1-NMS                         : Best SC ACC: [Epoch: 119 value: 0.6813] Best SC mAP: [Epoch: 122 value: 0.2959] Best Seg mIuU: [Epoch:  1 value: 0.4354]
+2) AMTL-T3G-SV2GC-NMS                       : Best SC ACC: [Epoch:  57 value: 0.6839] Best SC mAP: [Epoch:  44 value: 0.3125] Best Seg mIuU: [Epoch:  1 value: 0.4350]
+1) MTL-KD-T0 (0.4 * sg) + (0.6 * (s + ds))  : Best SC ACC: [Epoch:  48 value: 0.6425] Best SC mAP: [Epoch:  93 value: 0.3216] Best Seg mIuU: [Epoch: 99 value: 0.3621]
+1) MTL-KD-T1 (0.4 * sg) + (0.6 * (s + ds))  : Best SC ACC: [Epoch:  46 value: 0.6270] Best SC mAP: [Epoch: 108 value: 0.3125] Best Seg mIuU: [Epoch: 68 value: 0.3696]
+1) MTL-KD-T2 (0.4 * sg) + (0.6 * (s + ds))  : Best SC ACC: [Epoch:  37 value: 0.6641] Best SC mAP: [Epoch:  56 value: 0.2917] Best Seg mIuU: [Epoch: 71 value: 0.3701]
+1) MTL-KD-T3 (0.4 * sg) + (0.6 * (s + ds))  : Best SC ACC: [Epoch:  43 value: 0.6537] Best SC mAP: [Epoch:  73 value: 0.2709] Best Seg mIuU: [Epoch: 71 value: 0.3720]
+###############################################################################################################################################
+                                                        current:
+###############################################################################################################################################
+stl-s-v3
+stl-s-v4
+
+
+
+
+###############################################################################################################################################
+1) STL-SEG              OPT 0.000           : Best SC ACC: [Epoch: 15 value: 0.0164] Best SC mAP: [Epoch: 28 value: 0.0852] Best Seg mIuU: [Epoch: 53 value: 0.3926]
+Train Epoch: 53/101 lr: 0.000009039  Graph_loss: 10.4037 Segmentation_Loss: 27.2362 Execution time: 321.5925
+================= Evaluation ====================
+Graph        :  acc: 0.0155  map: 0.0848 recall: 0.1371  loss: 12.9109}
+Segmentation : Pacc: 0.9483 mIoU: 0.3926   loss: 0.1650}
+Best SC ACC: [Epoch: 15 value: 0.0164] Best SC mAP: [Epoch: 28 value: 0.0852] Best Seg mIuU: [Epoch: 53 value: 0.3926]
+###############################################################################################################################################
+    ================= Evaluation ====================
+    Graph        :  acc: 0.0129  map: 0.0851 recall: 0.1366  loss: 12.9215}
+    Segmentation : Pacc: 0.1279 mIoU: 0.0247   loss: 2.0326}
+    PT SC ACC: [value: 0.0129] PT SC mAP: [value: 0.0851] PT Seg mIuU: [value: 0.0247]
+    ================= Train ====================
+    100%|█████████████████████████████████████████████████████████████████████████████████████████████| 390/390 [05:26<00:00,  1.20it/s]
+    Train Epoch: 1/101 lr: 0.000010000  Graph_loss: 10.4001 Segmentation_Loss: 501.5038 Execution time: 326.1400
+    100%|█████████████████████████████████████████████████████████████████████████████████████████████| 112/112 [01:22<00:00,  1.36it/s]
+    ================= Evaluation ====================
+    Graph        :  acc: 0.0121  map: 0.0850 recall: 0.1364  loss: 12.9348}
+    Segmentation : Pacc: 0.8842 mIoU: 0.2229   loss: 0.9011}
+    Best SC ACC: [Epoch: 1 value: 0.0121] Best SC mAP: [Epoch: 1 value: 0.0850] Best Seg mIuU: [Epoch: 1 value: 0.2229]
+    ================= Train ====================
+    100%|█████████████████████████████████████████████████████████████████████████████████████████████| 390/390 [05:20<00:00,  1.22it/s]
+    Train Epoch: 2/101 lr: 0.000010000  Graph_loss: 10.4064 Segmentation_Loss: 263.9272 Execution time: 320.4302
+    100%|█████████████████████████████████████████████████████████████████████████████████████████████| 112/112 [01:30<00:00,  1.23it/s]
+    ================= Evaluation ====================
+    Graph        :  acc: 0.0138  map: 0.0848 recall: 0.1367  loss: 12.9234}
+    Segmentation : Pacc: 0.9134 mIoU: 0.2483   loss: 0.5241}
+    Best SC ACC: [Epoch: 2 value: 0.0138] Best SC mAP: [Epoch: 1 value: 0.0850] Best Seg mIuU: [Epoch: 2 value: 0.2483]
+    ================= Train ====================
+    100%|█████████████████████████████████████████████████████████████████████████████████████████████| 390/390 [05:22<00:00,  1.21it/s]
+    Train Epoch: 3/101 lr: 0.000010000  Graph_loss: 10.4074 Segmentation_Loss: 178.4846 Execution time: 322.8765
+    100%|█████████████████████████████████████████████████████████████████████████████████████████████| 112/112 [01:24<00:00,  1.32it/s]
+    ================= Evaluation ====================
+    Graph        :  acc: 0.0129  map: 0.0847 recall: 0.1366  loss: 12.9184}
+    Segmentation : Pacc: 0.9154 mIoU: 0.2504   loss: 0.3973}
+    Best SC ACC: [Epoch: 2 value: 0.0138] Best SC mAP: [Epoch: 1 value: 0.0850] Best Seg mIuU: [Epoch: 3 value: 0.2504]
+    ================= Train ====================
+    100%|█████████████████████████████████████████████████████████████████████████████████████████████| 390/390 [05:17<00:00,  1.23it/s]
+    Train Epoch: 4/101 lr: 0.000010000  Graph_loss: 10.4083 Segmentation_Loss: 131.0045 Execution time: 317.5799
+    100%|█████████████████████████████████████████████████████████████████████████████████████████████| 112/112 [01:22<00:00,  1.37it/s]
+    ================= Evaluation ====================
+    Graph        :  acc: 0.0138  map: 0.0844 recall: 0.1367  loss: 12.9233}
+    Segmentation : Pacc: 0.9162 mIoU: 0.2570   loss: 0.3442}
+    Best SC ACC: [Epoch: 2 value: 0.0138] Best SC mAP: [Epoch: 1 value: 0.0850] Best Seg mIuU: [Epoch: 4 value: 0.2570]
+    ================= Train ====================
+    100%|█████████████████████████████████████████████████████████████████████████████████████████████| 390/390 [05:24<00:00,  1.20it/s]
+    Train Epoch: 5/101 lr: 0.000010000  Graph_loss: 10.4090 Segmentation_Loss: 100.8233 Execution time: 324.4542
+    100%|█████████████████████████████████████████████████████████████████████████████████████████████| 112/112 [01:25<00:00,  1.31it/s]
+    ================= Evaluation ====================
+    Graph        :  acc: 0.0121  map: 0.0847 recall: 0.1364  loss: 12.9204}
+    Segmentation : Pacc: 0.9245 mIoU: 0.2653   loss: 0.2782}
+    Best SC ACC: [Epoch: 2 value: 0.0138] Best SC mAP: [Epoch: 1 value: 0.0850] Best Seg mIuU: [Epoch: 5 value: 0.2653]
+    ================= Train ====================
+    100%|█████████████████████████████████████████████████████████████████████████████████████████████| 390/390 [05:20<00:00,  1.22it/s]
+    Train Epoch: 6/101 lr: 0.000010000  Graph_loss: 10.4089 Segmentation_Loss: 81.3765 Execution time: 320.2554
+    100%|█████████████████████████████████████████████████████████████████████████████████████████████| 112/112 [01:24<00:00,  1.32it/s]
+    ================= Evaluation ====================
+    Graph        :  acc: 0.0129  map: 0.0848 recall: 0.1366  loss: 12.9171}
+    Segmentation : Pacc: 0.9292 mIoU: 0.2852   loss: 0.2443}
+    Best SC ACC: [Epoch: 2 value: 0.0138] Best SC mAP: [Epoch: 1 value: 0.0850] Best Seg mIuU: [Epoch: 6 value: 0.2852]
+    ================= Train ====================
+    100%|█████████████████████████████████████████████████████████████████████████████████████████████| 390/390 [05:12<00:00,  1.25it/s]
+    Train Epoch: 7/101 lr: 0.000010000  Graph_loss: 10.4079 Segmentation_Loss: 69.7077 Execution time: 312.7350
+    100%|█████████████████████████████████████████████████████████████████████████████████████████████| 112/112 [01:30<00:00,  1.24it/s]
+    ================= Evaluation ====================
+    Graph        :  acc: 0.0146  map: 0.0849 recall: 0.1369  loss: 12.9232}
+    Segmentation : Pacc: 0.9284 mIoU: 0.2968   loss: 0.2317}
+    Best SC ACC: [Epoch: 7 value: 0.0146] Best SC mAP: [Epoch: 1 value: 0.0850] Best Seg mIuU: [Epoch: 7 value: 0.2968]
+    ================= Train ====================
+    100%|█████████████████████████████████████████████████████████████████████████████████████████████| 390/390 [05:20<00:00,  1.22it/s]
+    Train Epoch: 8/101 lr: 0.000010000  Graph_loss: 10.4079 Segmentation_Loss: 61.6995 Execution time: 320.3343
+    100%|█████████████████████████████████████████████████████████████████████████████████████████████| 112/112 [01:25<00:00,  1.31it/s]
+    ================= Evaluation ====================
+    Graph        :  acc: 0.0138  map: 0.0849 recall: 0.1367  loss: 12.9152}
+    Segmentation : Pacc: 0.9304 mIoU: 0.2948   loss: 0.2224}
+    Best SC ACC: [Epoch: 7 value: 0.0146] Best SC mAP: [Epoch: 1 value: 0.0850] Best Seg mIuU: [Epoch: 7 value: 0.2968]
+    ================= Train ====================
+    100%|█████████████████████████████████████████████████████████████████████████████████████████████| 390/390 [05:24<00:00,  1.20it/s]
+    Train Epoch: 9/101 lr: 0.000010000  Graph_loss: 10.4083 Segmentation_Loss: 55.4777 Execution time: 324.8998
+    100%|█████████████████████████████████████████████████████████████████████████████████████████████| 112/112 [01:23<00:00,  1.33it/s]
+    ================= Evaluation ====================
+    Graph        :  acc: 0.0146  map: 0.0848 recall: 0.1369  loss: 12.9162}
+    Segmentation : Pacc: 0.9308 mIoU: 0.3084   loss: 0.2103}
+    Best SC ACC: [Epoch: 7 value: 0.0146] Best SC mAP: [Epoch: 1 value: 0.0850] Best Seg mIuU: [Epoch: 9 value: 0.3084]
+    ================= Train ====================
+    100%|█████████████████████████████████████████████████████████████████████████████████████████████| 390/390 [05:17<00:00,  1.23it/s]
+    Train Epoch: 10/101 lr: 0.000009800  Graph_loss: 10.4080 Segmentation_Loss: 52.2159 Execution time: 317.6440
+    100%|█████████████████████████████████████████████████████████████████████████████████████████████| 112/112 [01:27<00:00,  1.28it/s]
+    ================= Evaluation ====================
+    Graph        :  acc: 0.0129  map: 0.0850 recall: 0.1366  loss: 12.9204}
+    Segmentation : Pacc: 0.9332 mIoU: 0.3186   loss: 0.2057}
+    Best SC ACC: [Epoch: 7 value: 0.0146] Best SC mAP: [Epoch: 1 value: 0.0850] Best Seg mIuU: [Epoch: 10 value: 0.3186]
+    ================= Train ====================
+    100%|█████████████████████████████████████████████████████████████████████████████████████████████| 390/390 [05:19<00:00,  1.22it/s]
+    Train Epoch: 11/101 lr: 0.000009800  Graph_loss: 10.4079 Segmentation_Loss: 48.2074 Execution time: 319.3531
+    100%|█████████████████████████████████████████████████████████████████████████████████████████████| 112/112 [01:28<00:00,  1.26it/s]
+    ================= Evaluation ====================
+    Graph        :  acc: 0.0138  map: 0.0846 recall: 0.1367  loss: 12.9185}
+    Segmentation : Pacc: 0.9352 mIoU: 0.3188   loss: 0.1957}
+    Best SC ACC: [Epoch: 7 value: 0.0146] Best SC mAP: [Epoch: 1 value: 0.0850] Best Seg mIuU: [Epoch: 11 value: 0.3188]
+    ================= Train ====================
+    100%|█████████████████████████████████████████████████████████████████████████████████████████████| 390/390 [05:21<00:00,  1.21it/s]
+    Train Epoch: 12/101 lr: 0.000009800  Graph_loss: 10.4088 Segmentation_Loss: 46.1975 Execution time: 321.6962
+    100%|█████████████████████████████████████████████████████████████████████████████████████████████| 112/112 [01:23<00:00,  1.34it/s]
+    ================= Evaluation ====================
+    Graph        :  acc: 0.0155  map: 0.0848 recall: 0.1371  loss: 12.9144}
+    Segmentation : Pacc: 0.9348 mIoU: 0.3247   loss: 0.1932}
+    Best SC ACC: [Epoch: 12 value: 0.0155] Best SC mAP: [Epoch: 1 value: 0.0850] Best Seg mIuU: [Epoch: 12 value: 0.3247]
+    ================= Train ====================
+    100%|█████████████████████████████████████████████████████████████████████████████████████████████| 390/390 [05:24<00:00,  1.20it/s]
+    Train Epoch: 13/101 lr: 0.000009800  Graph_loss: 10.4097 Segmentation_Loss: 44.3251 Execution time: 324.8535
+    100%|█████████████████████████████████████████████████████████████████████████████████████████████| 112/112 [01:22<00:00,  1.35it/s]
+    ================= Evaluation ====================
+    Graph        :  acc: 0.0138  map: 0.0849 recall: 0.1367  loss: 12.9331}
+    Segmentation : Pacc: 0.9380 mIoU: 0.3362   loss: 0.1841}
+    Best SC ACC: [Epoch: 12 value: 0.0155] Best SC mAP: [Epoch: 1 value: 0.0850] Best Seg mIuU: [Epoch: 13 value: 0.3362]
+    ================= Train ====================
+    100%|█████████████████████████████████████████████████████████████████████████████████████████████| 390/390 [05:16<00:00,  1.23it/s]
+    Train Epoch: 14/101 lr: 0.000009800  Graph_loss: 10.4090 Segmentation_Loss: 42.2215 Execution time: 316.3123
+    100%|█████████████████████████████████████████████████████████████████████████████████████████████| 112/112 [01:31<00:00,  1.22it/s]
+    ================= Evaluation ====================
+    Graph        :  acc: 0.0146  map: 0.0847 recall: 0.1369  loss: 12.9222}
+    Segmentation : Pacc: 0.9372 mIoU: 0.3417   loss: 0.1845}
+    Best SC ACC: [Epoch: 12 value: 0.0155] Best SC mAP: [Epoch: 1 value: 0.0850] Best Seg mIuU: [Epoch: 14 value: 0.3417]
+    ================= Train ====================
+    100%|█████████████████████████████████████████████████████████████████████████████████████████████| 390/390 [05:17<00:00,  1.23it/s]
+    Train Epoch: 15/101 lr: 0.000009800  Graph_loss: 10.4098 Segmentation_Loss: 41.0067 Execution time: 317.0688
+    100%|█████████████████████████████████████████████████████████████████████████████████████████████| 112/112 [01:26<00:00,  1.30it/s]
+    ================= Evaluation ====================
+    Graph        :  acc: 0.0164  map: 0.0847 recall: 0.1373  loss: 12.9355}
+    Segmentation : Pacc: 0.9370 mIoU: 0.3456   loss: 0.1897}
+    Best SC ACC: [Epoch: 15 value: 0.0164] Best SC mAP: [Epoch: 1 value: 0.0850] Best Seg mIuU: [Epoch: 15 value: 0.3456]
+    ================= Train ====================
+    100%|█████████████████████████████████████████████████████████████████████████████████████████████| 390/390 [05:20<00:00,  1.22it/s]
+    Train Epoch: 16/101 lr: 0.000009800  Graph_loss: 10.4095 Segmentation_Loss: 39.9214 Execution time: 320.6250
+    100%|█████████████████████████████████████████████████████████████████████████████████████████████| 112/112 [01:26<00:00,  1.29it/s]
+    ================= Evaluation ====================
+    Graph        :  acc: 0.0164  map: 0.0850 recall: 0.1373  loss: 12.9209}
+    Segmentation : Pacc: 0.9341 mIoU: 0.3337   loss: 0.1956}
+    Best SC ACC: [Epoch: 15 value: 0.0164] Best SC mAP: [Epoch: 1 value: 0.0850] Best Seg mIuU: [Epoch: 15 value: 0.3456]
+    ================= Train ====================
+    100%|█████████████████████████████████████████████████████████████████████████████████████████████| 390/390 [05:23<00:00,  1.20it/s]
+    Train Epoch: 17/101 lr: 0.000009800  Graph_loss: 10.4085 Segmentation_Loss: 38.7678 Execution time: 323.9458
+    100%|█████████████████████████████████████████████████████████████████████████████████████████████| 112/112 [01:23<00:00,  1.35it/s]
+    ================= Evaluation ====================
+    Graph        :  acc: 0.0155  map: 0.0848 recall: 0.1371  loss: 12.9329}
+    Segmentation : Pacc: 0.9396 mIoU: 0.3383   loss: 0.1815}
+    Best SC ACC: [Epoch: 15 value: 0.0164] Best SC mAP: [Epoch: 1 value: 0.0850] Best Seg mIuU: [Epoch: 15 value: 0.3456]
+    ================= Train ====================
+    100%|█████████████████████████████████████████████████████████████████████████████████████████████| 390/390 [05:24<00:00,  1.20it/s]
+    Train Epoch: 18/101 lr: 0.000009800  Graph_loss: 10.4075 Segmentation_Loss: 37.8102 Execution time: 324.9910
+    100%|█████████████████████████████████████████████████████████████████████████████████████████████| 112/112 [01:27<00:00,  1.28it/s]
+    ================= Evaluation ====================
+    Graph        :  acc: 0.0155  map: 0.0846 recall: 0.1371  loss: 12.9086}
+    Segmentation : Pacc: 0.9387 mIoU: 0.3409   loss: 0.1809}
+    Best SC ACC: [Epoch: 15 value: 0.0164] Best SC mAP: [Epoch: 1 value: 0.0850] Best Seg mIuU: [Epoch: 15 value: 0.3456]
