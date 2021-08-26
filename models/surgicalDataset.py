@@ -183,3 +183,6 @@ def collate_fn(batch):
 
     batch_data['img'] = torch.FloatTensor(np.concatenate(batch_data['img'], axis=0))
     batch_data['mask'] = torch.LongTensor(np.concatenate(batch_data['mask'], axis=0))
+    batch_data['edge_labels'] = torch.FloatTensor(np.concatenate(batch_data['edge_labels'], axis=0))
+    batch_data['features'] = torch.FloatTensor(np.concatenate(batch_data['features'], axis=0))
+    batch_data[
