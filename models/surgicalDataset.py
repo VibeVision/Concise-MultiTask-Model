@@ -185,4 +185,7 @@ def collate_fn(batch):
     batch_data['mask'] = torch.LongTensor(np.concatenate(batch_data['mask'], axis=0))
     batch_data['edge_labels'] = torch.FloatTensor(np.concatenate(batch_data['edge_labels'], axis=0))
     batch_data['features'] = torch.FloatTensor(np.concatenate(batch_data['features'], axis=0))
-    batch_data[
+    batch_data['spatial_feat'] = torch.FloatTensor(np.concatenate(batch_data['spatial_feat'], axis=0))
+    batch_data['word2vec'] = torch.FloatTensor(np.concatenate(batch_data['word2vec'], axis=0))
+
+    return batch_data

@@ -1,0 +1,21 @@
+
+###############################################################################################################################################
+                                                       STL-model
+1) STL-SEG-NoGlore      OPT 0.000           : Best SC ACC: [Epoch:  1 value: 0.0034] Best SC mAP: [Epoch: 76 value: 0.1106] Best Seg mIuU: [Epoch: 68 value: 0.3858]
+2) STL-SEG              OPT 0.000           : Best SC ACC: [Epoch: 15 value: 0.0164] Best SC mAP: [Epoch: 28 value: 0.0852] Best Seg mIuU: [Epoch: 53 value: 0.3926]
+3) STL-SEG-V1           OPT 0.000           : Best SC ACC: [Epoch:  0 value: 0.0000] Best SC mAP: [Epoch:  1 value: 0.1038] Best Seg mIuU: [Epoch: 68 value: 0.4354]
+4) STL-SEG-V2GC         OPT 0.000           : Best SC ACC: [Epoch:  1 value: 0.0103] Best SC mAP: [Epoch:  2 value: 0.1034] Best Seg mIuU: [Epoch: 68 value: 0.4350]
+5) STL-SEG-V2CGC        OPT 0.000           : Best SC ACC: [Epoch:  3 value: 0.1602] Best SC mAP: [Epoch: 34 value: 0.1160] Best Seg mIuU: [Epoch: 68 value: 0.4148]
+6) STL-SG                                   : Best SC ACC: [Epoch: 51 value: 0.6537] Best SC mAP: [Epoch: 69 value: 0.3040] Best Seg mIuU: [Epoch:  1 value: 0.0620]
+7) STL-SG-WFE                               : Best SC ACC: [Epoch: 10 value: 0.5504] Best SC mAP: [Epoch: 65 value: 0.2511] Best Seg mIuU: [Epoch:  1 value: 0.0096]
+
+
+
+
+                                                       Async-MTL
+1) AMTL-T0-S                                : Best SC ACC: [Epoch:  57 value: 0.6787] Best SC mAP: [Epoch: 125 value: 0.2926] Best Seg mIuU: [Epoch: 1 value: 0.3926]
+2) AMTL-T0-SV1                              : Best SC ACC: [Epoch: 124 value: 0.7003] Best SC mAP: [Epoch:  89 value: 0.2927] Best Seg mIuU: [Epoch: 1 value: 0.4354]
+3) AMTL-T0-SV2GC                            : Best SC ACC: [Epoch: 110 value: 0.6813] Best SC mAP: [Epoch: 120 value: 0.2936] Best Seg mIuU: [Epoch: 1 value: 0.4350]
+4) AMTL-T3-S                                : Best SC ACC: [Epoch: 108 value: 0.6641] Best SC mAP: [Epoch: 130 value: 0.3029] Best Seg mIuU: [Epoch: 1 value: 0.3926]
+5) AMTL-T3-SV1                              : Best SC ACC: [Epoch: 126 value: 0.6848] Best SC mAP: [Epoch: 117 value: 0.3029] Best Seg mIuU: [Epoch: 1 value: 0.4354]
+6) AMTL-T3-SV2GC                            : Best SC ACC: [Epoch: 100 value: 0.6770] Best SC mAP: [Epoch: 100 value: 0.3062] Best Seg mIuU: [Epoch: 1 value: 0.4350]
