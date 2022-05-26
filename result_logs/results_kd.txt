@@ -1,0 +1,23 @@
+
+
+
+###############################################################################################################################################
+                                                       MTL-KD experiments
+1) MTL-KD-T0    T_SEG                   : Best SC ACC: [Epoch: 44 value: 0.6658] Best SC mAP: [Epoch: 50 value: 0.2931] Best Seg mIuU: [Epoch: 39 value: 0.3759]
+2) MTL-KD-T1    T_SEG                   : Best SC ACC: [Epoch: 37 value: 0.6563] Best SC mAP: [Epoch: 50 value: 0.2743] Best Seg mIuU: [Epoch: 34 value: 0.3825]
+3) MTL-KD-T2    T_SEG                   : Best SC ACC: [Epoch: 58 value: 0.6813] Best SC mAP: [Epoch: 36 value: 0.2760] Best Seg mIuU: [Epoch: 39 value: 0.3849]
+4) MTL-KD-T3    T_SEG                   : Best SC ACC: [Epoch: 57 value: 0.6339] Best SC mAP: [Epoch: 88 value: 0.2846] Best Seg mIuU: [Epoch: 64 value: 0.3872]
+###############################################################################################################################################
+
+
+###############################################################################################################################################
+1) MTL-KD-T0    T_SEG                   : Best SC ACC: [Epoch: 44 value: 0.6658] Best SC mAP: [Epoch: 50 value: 0.2931] Best Seg mIuU: [Epoch: 39 value: 0.3759]
+###############################################################################################################################################
+================= Evaluation ====================
+Graph        :  acc: 0.2394  map: 0.0876 recall: 0.1000  loss: 22.2992}
+Segmentation : Pacc: 0.9488 mIoU: 0.3953   loss: 0.1693}
+=================== Student Model=========================
+================= Evaluation ====================
+Graph        :  acc: 0.0000  map: 0.0899 recall: 0.0000  loss: 20.6962}
+Segmentation : Pacc: 0.0478 mIoU: 0.0117   loss: 2.0767}
+PT SC ACC: [value: 0.0000] PT SC mAP: [value: 0.0899] PT Seg mIuU: [value: 0.0117]
