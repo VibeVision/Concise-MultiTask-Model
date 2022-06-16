@@ -3520,3 +3520,214 @@ Best SC ACC: [Epoch: 57 value: 0.6339] Best SC mAP: [Epoch: 60 value: 0.2775] Be
   0%|                                                                                                    | 0/390 [00:00<?, ?it/s]/usr/local/lib/python3.6/dist-packages/dgl/base.py:18: UserWarning: Initializer is not set. Use zero initializer instead. To suppress this warning, use `set_initializer` to explicitly specify which initializer to use.
   warnings.warn(msg)
 100%|██████████████████████████████████████████████████████████████████████████████████████████| 390/390 [05:04<00:00,  1.28it/s]
+Train Epoch: 78/101 lr: 0.000008681  Graph_loss: 2.4663 Segmentation_Loss: 26.2752 Execution time: 304.9574
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 112/112 [00:52<00:00,  2.13it/s]
+================= Evaluation ====================
+Graph        :  acc: 0.6003  map: 0.2658 recall: 0.2675  loss: 1.8518}
+Segmentation : Pacc: 0.9456 mIoU: 0.3647   loss: 0.1904}
+Best SC ACC: [Epoch: 57 value: 0.6339] Best SC mAP: [Epoch: 60 value: 0.2775] Best Seg mIuU: [Epoch: 64 value: 0.3872]
+================= Train ====================
+  0%|                                                                                                    | 0/390 [00:00<?, ?it/s]/usr/local/lib/python3.6/dist-packages/dgl/base.py:18: UserWarning: Initializer is not set. Use zero initializer instead. To suppress this warning, use `set_initializer` to explicitly specify which initializer to use.
+  warnings.warn(msg)
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 390/390 [05:01<00:00,  1.29it/s]
+Train Epoch: 79/101 lr: 0.000008681  Graph_loss: 2.4538 Segmentation_Loss: 26.2658 Execution time: 301.7016
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 112/112 [00:51<00:00,  2.19it/s]
+================= Evaluation ====================
+Graph        :  acc: 0.5874  map: 0.2747 recall: 0.2796  loss: 1.7536}
+Segmentation : Pacc: 0.9457 mIoU: 0.3652   loss: 0.1911}
+Best SC ACC: [Epoch: 57 value: 0.6339] Best SC mAP: [Epoch: 60 value: 0.2775] Best Seg mIuU: [Epoch: 64 value: 0.3872]
+================= Train ====================
+  0%|                                                                                                    | 0/390 [00:00<?, ?it/s]/usr/local/lib/python3.6/dist-packages/dgl/base.py:18: UserWarning: Initializer is not set. Use zero initializer instead. To suppress this warning, use `set_initializer` to explicitly specify which initializer to use.
+  warnings.warn(msg)
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 390/390 [04:59<00:00,  1.30it/s]
+Train Epoch: 80/101 lr: 0.000008508  Graph_loss: 2.4292 Segmentation_Loss: 26.1686 Execution time: 299.0892
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 112/112 [00:51<00:00,  2.16it/s]
+================= Evaluation ====================
+Graph        :  acc: 0.5780  map: 0.2724 recall: 0.2521  loss: 1.8427}
+Segmentation : Pacc: 0.9450 mIoU: 0.3740   loss: 0.1994}
+Best SC ACC: [Epoch: 57 value: 0.6339] Best SC mAP: [Epoch: 60 value: 0.2775] Best Seg mIuU: [Epoch: 64 value: 0.3872]
+================= Train ====================
+  0%|                                                                                                    | 0/390 [00:00<?, ?it/s]/usr/local/lib/python3.6/dist-packages/dgl/base.py:18: UserWarning: Initializer is not set. Use zero initializer instead. To suppress this warning, use `set_initializer` to explicitly specify which initializer to use.
+  warnings.warn(msg)
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 390/390 [05:04<00:00,  1.28it/s]
+Train Epoch: 81/101 lr: 0.000008508  Graph_loss: 2.4400 Segmentation_Loss: 26.1304 Execution time: 304.7495
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 112/112 [00:51<00:00,  2.16it/s]
+================= Evaluation ====================
+Graph        :  acc: 0.6227  map: 0.2618 recall: 0.2747  loss: 1.8443}
+Segmentation : Pacc: 0.9454 mIoU: 0.3722   loss: 0.1926}
+Best SC ACC: [Epoch: 57 value: 0.6339] Best SC mAP: [Epoch: 60 value: 0.2775] Best Seg mIuU: [Epoch: 64 value: 0.3872]
+================= Train ====================
+  0%|                                                                                                    | 0/390 [00:00<?, ?it/s]/usr/local/lib/python3.6/dist-packages/dgl/base.py:18: UserWarning: Initializer is not set. Use zero initializer instead. To suppress this warning, use `set_initializer` to explicitly specify which initializer to use.
+  warnings.warn(msg)
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 390/390 [05:03<00:00,  1.28it/s]
+Train Epoch: 82/101 lr: 0.000008508  Graph_loss: 2.4481 Segmentation_Loss: 26.1809 Execution time: 303.9875
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 112/112 [00:51<00:00,  2.18it/s]
+================= Evaluation ====================
+Graph        :  acc: 0.6098  map: 0.2736 recall: 0.3329  loss: 1.7186}
+Segmentation : Pacc: 0.9461 mIoU: 0.3758   loss: 0.1897}
+Best SC ACC: [Epoch: 57 value: 0.6339] Best SC mAP: [Epoch: 60 value: 0.2775] Best Seg mIuU: [Epoch: 64 value: 0.3872]
+================= Train ====================
+  0%|                                                                                                    | 0/390 [00:00<?, ?it/s]/usr/local/lib/python3.6/dist-packages/dgl/base.py:18: UserWarning: Initializer is not set. Use zero initializer instead. To suppress this warning, use `set_initializer` to explicitly specify which initializer to use.
+  warnings.warn(msg)
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 390/390 [05:07<00:00,  1.27it/s]
+Train Epoch: 83/101 lr: 0.000008508  Graph_loss: 2.4164 Segmentation_Loss: 26.0253 Execution time: 307.7290
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 112/112 [00:52<00:00,  2.13it/s]
+================= Evaluation ====================
+Graph        :  acc: 0.5995  map: 0.2644 recall: 0.2469  loss: 1.8827}
+Segmentation : Pacc: 0.9465 mIoU: 0.3721   loss: 0.1929}
+Best SC ACC: [Epoch: 57 value: 0.6339] Best SC mAP: [Epoch: 60 value: 0.2775] Best Seg mIuU: [Epoch: 64 value: 0.3872]
+================= Train ====================
+  0%|                                                                                                    | 0/390 [00:00<?, ?it/s]/usr/local/lib/python3.6/dist-packages/dgl/base.py:18: UserWarning: Initializer is not set. Use zero initializer instead. To suppress this warning, use `set_initializer` to explicitly specify which initializer to use.
+  warnings.warn(msg)
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 390/390 [05:04<00:00,  1.28it/s]
+Train Epoch: 84/101 lr: 0.000008508  Graph_loss: 2.4022 Segmentation_Loss: 26.0413 Execution time: 304.3200
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 112/112 [00:51<00:00,  2.17it/s]
+================= Evaluation ====================
+Graph        :  acc: 0.5650  map: 0.2469 recall: 0.2193  loss: 2.1117}
+Segmentation : Pacc: 0.9461 mIoU: 0.3793   loss: 0.1926}
+Best SC ACC: [Epoch: 57 value: 0.6339] Best SC mAP: [Epoch: 60 value: 0.2775] Best Seg mIuU: [Epoch: 64 value: 0.3872]
+================= Train ====================
+  0%|                                                                                                    | 0/390 [00:00<?, ?it/s]/usr/local/lib/python3.6/dist-packages/dgl/base.py:18: UserWarning: Initializer is not set. Use zero initializer instead. To suppress this warning, use `set_initializer` to explicitly specify which initializer to use.
+  warnings.warn(msg)
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 390/390 [05:03<00:00,  1.29it/s]
+Train Epoch: 85/101 lr: 0.000008508  Graph_loss: 2.4166 Segmentation_Loss: 26.1048 Execution time: 303.1449
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 112/112 [00:52<00:00,  2.14it/s]
+================= Evaluation ====================
+Graph        :  acc: 0.6270  map: 0.2731 recall: 0.3255  loss: 1.6902}
+Segmentation : Pacc: 0.9458 mIoU: 0.3607   loss: 0.1986}
+Best SC ACC: [Epoch: 57 value: 0.6339] Best SC mAP: [Epoch: 60 value: 0.2775] Best Seg mIuU: [Epoch: 64 value: 0.3872]
+================= Train ====================
+  0%|                                                                                                    | 0/390 [00:00<?, ?it/s]/usr/local/lib/python3.6/dist-packages/dgl/base.py:18: UserWarning: Initializer is not set. Use zero initializer instead. To suppress this warning, use `set_initializer` to explicitly specify which initializer to use.
+  warnings.warn(msg)
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 390/390 [05:01<00:00,  1.29it/s]
+Train Epoch: 86/101 lr: 0.000008508  Graph_loss: 2.4139 Segmentation_Loss: 25.9560 Execution time: 301.8892
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 112/112 [00:52<00:00,  2.14it/s]
+================= Evaluation ====================
+Graph        :  acc: 0.5840  map: 0.2645 recall: 0.2333  loss: 2.1359}
+Segmentation : Pacc: 0.9457 mIoU: 0.3752   loss: 0.1926}
+Best SC ACC: [Epoch: 57 value: 0.6339] Best SC mAP: [Epoch: 60 value: 0.2775] Best Seg mIuU: [Epoch: 64 value: 0.3872]
+================= Train ====================
+  0%|                                                                                                    | 0/390 [00:00<?, ?it/s]/usr/local/lib/python3.6/dist-packages/dgl/base.py:18: UserWarning: Initializer is not set. Use zero initializer instead. To suppress this warning, use `set_initializer` to explicitly specify which initializer to use.
+  warnings.warn(msg)
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 390/390 [05:05<00:00,  1.28it/s]
+Train Epoch: 87/101 lr: 0.000008508  Graph_loss: 2.3934 Segmentation_Loss: 25.8538 Execution time: 305.4991
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 112/112 [00:52<00:00,  2.14it/s]
+================= Evaluation ====================
+Graph        :  acc: 0.5986  map: 0.2649 recall: 0.3046  loss: 1.7984}
+Segmentation : Pacc: 0.9469 mIoU: 0.3781   loss: 0.1890}
+Best SC ACC: [Epoch: 57 value: 0.6339] Best SC mAP: [Epoch: 60 value: 0.2775] Best Seg mIuU: [Epoch: 64 value: 0.3872]
+================= Train ====================
+  0%|                                                                                                    | 0/390 [00:00<?, ?it/s]/usr/local/lib/python3.6/dist-packages/dgl/base.py:18: UserWarning: Initializer is not set. Use zero initializer instead. To suppress this warning, use `set_initializer` to explicitly specify which initializer to use.
+  warnings.warn(msg)
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 390/390 [05:06<00:00,  1.27it/s]
+Train Epoch: 88/101 lr: 0.000008508  Graph_loss: 2.3967 Segmentation_Loss: 25.8852 Execution time: 306.8364
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 112/112 [00:51<00:00,  2.16it/s]
+================= Evaluation ====================
+Graph        :  acc: 0.6184  map: 0.2846 recall: 0.3093  loss: 1.6964}
+Segmentation : Pacc: 0.9465 mIoU: 0.3717   loss: 0.1913}
+Best SC ACC: [Epoch: 57 value: 0.6339] Best SC mAP: [Epoch: 88 value: 0.2846] Best Seg mIuU: [Epoch: 64 value: 0.3872]
+================= Train ====================
+  0%|                                                                                                    | 0/390 [00:00<?, ?it/s]/usr/local/lib/python3.6/dist-packages/dgl/base.py:18: UserWarning: Initializer is not set. Use zero initializer instead. To suppress this warning, use `set_initializer` to explicitly specify which initializer to use.
+  warnings.warn(msg)
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 390/390 [05:02<00:00,  1.29it/s]
+Train Epoch: 89/101 lr: 0.000008508  Graph_loss: 2.4198 Segmentation_Loss: 25.8370 Execution time: 302.9306
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 112/112 [00:52<00:00,  2.14it/s]
+================= Evaluation ====================
+Graph        :  acc: 0.6090  map: 0.2500 recall: 0.2323  loss: 2.0420}
+Segmentation : Pacc: 0.9462 mIoU: 0.3742   loss: 0.1949}
+Best SC ACC: [Epoch: 57 value: 0.6339] Best SC mAP: [Epoch: 88 value: 0.2846] Best Seg mIuU: [Epoch: 64 value: 0.3872]
+================= Train ====================
+  0%|                                                                                                    | 0/390 [00:00<?, ?it/s]/usr/local/lib/python3.6/dist-packages/dgl/base.py:18: UserWarning: Initializer is not set. Use zero initializer instead. To suppress this warning, use `set_initializer` to explicitly specify which initializer to use.
+  warnings.warn(msg)
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 390/390 [05:03<00:00,  1.29it/s]
+Train Epoch: 90/101 lr: 0.000008337  Graph_loss: 2.3754 Segmentation_Loss: 25.7716 Execution time: 303.3695
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 112/112 [00:53<00:00,  2.09it/s]
+================= Evaluation ====================
+Graph        :  acc: 0.6055  map: 0.2683 recall: 0.2810  loss: 1.8295}
+Segmentation : Pacc: 0.9466 mIoU: 0.3828   loss: 0.1930}
+Best SC ACC: [Epoch: 57 value: 0.6339] Best SC mAP: [Epoch: 88 value: 0.2846] Best Seg mIuU: [Epoch: 64 value: 0.3872]
+================= Train ====================
+  0%|                                                                                                    | 0/390 [00:00<?, ?it/s]/usr/local/lib/python3.6/dist-packages/dgl/base.py:18: UserWarning: Initializer is not set. Use zero initializer instead. To suppress this warning, use `set_initializer` to explicitly specify which initializer to use.
+  warnings.warn(msg)
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 390/390 [05:43<00:00,  1.14it/s]
+Train Epoch: 91/101 lr: 0.000008337  Graph_loss: 2.3955 Segmentation_Loss: 25.7671 Execution time: 343.4527
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 112/112 [01:34<00:00,  1.19it/s]
+================= Evaluation ====================
+Graph        :  acc: 0.5452  map: 0.2421 recall: 0.1876  loss: 2.3153}
+Segmentation : Pacc: 0.9462 mIoU: 0.3664   loss: 0.2000}
+Best SC ACC: [Epoch: 57 value: 0.6339] Best SC mAP: [Epoch: 88 value: 0.2846] Best Seg mIuU: [Epoch: 64 value: 0.3872]
+================= Train ====================
+  0%|                                                                                                    | 0/390 [00:00<?, ?it/s]/usr/local/lib/python3.6/dist-packages/dgl/base.py:18: UserWarning: Initializer is not set. Use zero initializer instead. To suppress this warning, use `set_initializer` to explicitly specify which initializer to use.
+  warnings.warn(msg)
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 390/390 [08:06<00:00,  1.25s/it]
+Train Epoch: 92/101 lr: 0.000008337  Graph_loss: 2.3765 Segmentation_Loss: 25.8385 Execution time: 486.9901
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 112/112 [01:26<00:00,  1.29it/s]
+================= Evaluation ====================
+Graph        :  acc: 0.5926  map: 0.2521 recall: 0.2419  loss: 1.9018}
+Segmentation : Pacc: 0.9452 mIoU: 0.3709   loss: 0.1921}
+Best SC ACC: [Epoch: 57 value: 0.6339] Best SC mAP: [Epoch: 88 value: 0.2846] Best Seg mIuU: [Epoch: 64 value: 0.3872]
+================= Train ====================
+  0%|                                                                                                    | 0/390 [00:00<?, ?it/s]/usr/local/lib/python3.6/dist-packages/dgl/base.py:18: UserWarning: Initializer is not set. Use zero initializer instead. To suppress this warning, use `set_initializer` to explicitly specify which initializer to use.
+  warnings.warn(msg)
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 390/390 [08:23<00:00,  1.29s/it]
+Train Epoch: 93/101 lr: 0.000008337  Graph_loss: 2.3824 Segmentation_Loss: 25.7438 Execution time: 503.4572
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 112/112 [01:29<00:00,  1.25it/s]
+================= Evaluation ====================
+Graph        :  acc: 0.6003  map: 0.2586 recall: 0.2479  loss: 1.8265}
+Segmentation : Pacc: 0.9455 mIoU: 0.3614   loss: 0.1971}
+Best SC ACC: [Epoch: 57 value: 0.6339] Best SC mAP: [Epoch: 88 value: 0.2846] Best Seg mIuU: [Epoch: 64 value: 0.3872]
+================= Train ====================
+  0%|                                                                                                    | 0/390 [00:00<?, ?it/s]/usr/local/lib/python3.6/dist-packages/dgl/base.py:18: UserWarning: Initializer is not set. Use zero initializer instead. To suppress this warning, use `set_initializer` to explicitly specify which initializer to use.
+  warnings.warn(msg)
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 390/390 [08:35<00:00,  1.32s/it]
+Train Epoch: 94/101 lr: 0.000008337  Graph_loss: 2.3461 Segmentation_Loss: 25.5632 Execution time: 515.8446
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 112/112 [01:23<00:00,  1.34it/s]
+================= Evaluation ====================
+Graph        :  acc: 0.5995  map: 0.2547 recall: 0.2453  loss: 1.9967}
+Segmentation : Pacc: 0.9456 mIoU: 0.3722   loss: 0.1942}
+Best SC ACC: [Epoch: 57 value: 0.6339] Best SC mAP: [Epoch: 88 value: 0.2846] Best Seg mIuU: [Epoch: 64 value: 0.3872]
+================= Train ====================
+  0%|                                                                                                    | 0/390 [00:00<?, ?it/s]/usr/local/lib/python3.6/dist-packages/dgl/base.py:18: UserWarning: Initializer is not set. Use zero initializer instead. To suppress this warning, use `set_initializer` to explicitly specify which initializer to use.
+  warnings.warn(msg)
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 390/390 [08:24<00:00,  1.29s/it]
+Train Epoch: 95/101 lr: 0.000008337  Graph_loss: 2.3477 Segmentation_Loss: 25.8016 Execution time: 504.7800
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 112/112 [01:26<00:00,  1.30it/s]
+================= Evaluation ====================
+Graph        :  acc: 0.6253  map: 0.2683 recall: 0.2965  loss: 1.8208}
+Segmentation : Pacc: 0.9453 mIoU: 0.3719   loss: 0.1922}
+Best SC ACC: [Epoch: 57 value: 0.6339] Best SC mAP: [Epoch: 88 value: 0.2846] Best Seg mIuU: [Epoch: 64 value: 0.3872]
+================= Train ====================
+  0%|                                                                                                    | 0/390 [00:00<?, ?it/s]/usr/local/lib/python3.6/dist-packages/dgl/base.py:18: UserWarning: Initializer is not set. Use zero initializer instead. To suppress this warning, use `set_initializer` to explicitly specify which initializer to use.
+  warnings.warn(msg)
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 390/390 [08:17<00:00,  1.27s/it]
+Train Epoch: 96/101 lr: 0.000008337  Graph_loss: 2.3742 Segmentation_Loss: 25.5549 Execution time: 497.0957
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 112/112 [01:41<00:00,  1.11it/s]
+================= Evaluation ====================
+Graph        :  acc: 0.5797  map: 0.2614 recall: 0.2485  loss: 1.9588}
+Segmentation : Pacc: 0.9462 mIoU: 0.3750   loss: 0.1977}
+Best SC ACC: [Epoch: 57 value: 0.6339] Best SC mAP: [Epoch: 88 value: 0.2846] Best Seg mIuU: [Epoch: 64 value: 0.3872]
+================= Train ====================
+  0%|                                                                                                    | 0/390 [00:00<?, ?it/s]/usr/local/lib/python3.6/dist-packages/dgl/base.py:18: UserWarning: Initializer is not set. Use zero initializer instead. To suppress this warning, use `set_initializer` to explicitly specify which initializer to use.
+  warnings.warn(msg)
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 390/390 [08:22<00:00,  1.29s/it]
+Train Epoch: 97/101 lr: 0.000008337  Graph_loss: 2.3459 Segmentation_Loss: 25.5352 Execution time: 502.0842
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 112/112 [01:30<00:00,  1.23it/s]
+================= Evaluation ====================
+Graph        :  acc: 0.5952  map: 0.2488 recall: 0.2440  loss: 1.9605}
+Segmentation : Pacc: 0.9457 mIoU: 0.3792   loss: 0.1942}
+Best SC ACC: [Epoch: 57 value: 0.6339] Best SC mAP: [Epoch: 88 value: 0.2846] Best Seg mIuU: [Epoch: 64 value: 0.3872]
+================= Train ====================
+  0%|                                                                                                    | 0/390 [00:00<?, ?it/s]/usr/local/lib/python3.6/dist-packages/dgl/base.py:18: UserWarning: Initializer is not set. Use zero initializer instead. To suppress this warning, use `set_initializer` to explicitly specify which initializer to use.
+  warnings.warn(msg)
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 390/390 [08:48<00:00,  1.36s/it]
+Train Epoch: 98/101 lr: 0.000008337  Graph_loss: 2.3501 Segmentation_Loss: 25.6876 Execution time: 528.8360
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 112/112 [01:30<00:00,  1.24it/s]
+================= Evaluation ====================
+Graph        :  acc: 0.6021  map: 0.2569 recall: 0.2403  loss: 2.0488}
+Segmentation : Pacc: 0.9444 mIoU: 0.3754   loss: 0.1941}
+Best SC ACC: [Epoch: 57 value: 0.6339] Best SC mAP: [Epoch: 88 value: 0.2846] Best Seg mIuU: [Epoch: 64 value: 0.3872]
+================= Train ====================
+  0%|                                                                                                    | 0/390 [00:00<?, ?it/s]/usr/local/lib/python3.6/dist-packages/dgl/base.py:18: UserWarning: Initializer is not set. Use zero initializer instead. To suppress this warning, use `set_initializer` to explicitly specify which initializer to use.
+  warnings.warn(msg)
+100%|██████████████████████████████████████████████████████████████████████████████████████████| 390/390 [08:53<00:00,  1.37s/it]
+Train Epoch: 99/101 lr: 0.000008337  Graph_loss: 2.3401 Segmentation_Loss: 25.5501 Execution time: 533.9021
