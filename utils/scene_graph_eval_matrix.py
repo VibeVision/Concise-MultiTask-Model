@@ -6,4 +6,12 @@ def compute_mean_avg_prec(y_true, y_score):
         avg_prec = sklearn.metrics.average_precision_score(y_true, y_score, average=None)
         mean_avg_prec = np.nansum(avg_prec) / len(avg_prec)
     except ValueError:
-        mean_a
+        mean_avg_prec = 0
+
+    return mean_avg_prec
+
+def calibration_metrics(logits_all, labels_all):
+    
+    logits = logits_all.detach().cpu().numpy()
+    labels = labels_all.detach().cpu().numpy()
+    map_value = compute_mean_avg_pre
