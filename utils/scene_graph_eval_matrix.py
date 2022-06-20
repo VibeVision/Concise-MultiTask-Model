@@ -14,4 +14,7 @@ def calibration_metrics(logits_all, labels_all):
     
     logits = logits_all.detach().cpu().numpy()
     labels = labels_all.detach().cpu().numpy()
-    map_value = compute_mean_avg_pre
+    map_value = compute_mean_avg_prec(labels, logits)
+    labels = np.argmax(labels, axis=-1)
+    recall = sklearn.metrics.recall_score(labels, np.argmax(logits,1), average='macro')
+    return(map_value, recall)
