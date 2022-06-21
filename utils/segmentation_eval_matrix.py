@@ -19,4 +19,10 @@ def batch_pix_accuracy(output, target):
 
     pixel_labeled = np.sum(target > 0)
     pixel_correct = np.sum((predict == target)*(target > 0))
-    assert p
+    assert pixel_correct <= pixel_labeled, \
+        "Correct area should be smaller than Labeled"
+    return pixel_correct, pixel_labeled
+
+
+def batch_intersection_union(output, target, nclass):
+    """Batch Intersection of
