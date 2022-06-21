@@ -25,4 +25,13 @@ def batch_pix_accuracy(output, target):
 
 
 def batch_intersection_union(output, target, nclass):
-    """Batch Intersection of
+    """Batch Intersection of Union
+    Args:
+        predict: input 4D tensor
+        target: label 3D tensor
+        nclass: number of categories (int)
+    """
+    _, predict = torch.max(output, 1)
+    mini = 1
+    maxi = nclass
+    nbins = n
