@@ -34,4 +34,9 @@ def batch_intersection_union(output, target, nclass):
     _, predict = torch.max(output, 1)
     mini = 1
     maxi = nclass
-    nbins = n
+    nbins = nclass
+    predict = predict.cpu().numpy().astype('int64') + 1
+    target = target.cpu().numpy().astype('int64') + 1
+
+    predict = predict * (target > 0).astype(predict.dtype)
+    intersection = predict * (predict == ta
