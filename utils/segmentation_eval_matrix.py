@@ -50,4 +50,8 @@ def batch_intersection_union(output, target, nclass):
     return area_inter, area_union
 
 
-class SegmentationLosse
+class SegmentationLosses(nn.CrossEntropyLoss):
+    def __init__(self, se_loss=False, se_weight=0.2, nclass=-1,
+                 aux=False, aux_weight=0.4, weight=None,
+                 ignore_index=-1):
+        super(Segmentation
