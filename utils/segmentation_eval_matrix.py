@@ -54,4 +54,10 @@ class SegmentationLosses(nn.CrossEntropyLoss):
     def __init__(self, se_loss=False, se_weight=0.2, nclass=-1,
                  aux=False, aux_weight=0.4, weight=None,
                  ignore_index=-1):
-        super(Segmentation
+        super(SegmentationLosses, self).__init__(weight, None, ignore_index)
+        self.se_loss = se_loss
+        self.aux = aux
+        self.nclass = nclass
+        self.se_weight = se_weight
+        self.aux_weight = aux_weight
+       
