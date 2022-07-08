@@ -60,4 +60,9 @@ class SegmentationLosses(nn.CrossEntropyLoss):
         self.nclass = nclass
         self.se_weight = se_weight
         self.aux_weight = aux_weight
-       
+        self.bceloss = nn.BCELoss(weight)
+
+    def forward(self, *inputs):
+        if not self.se_loss and not self.aux:
+            return super(SegmentationLosses, self).forward(*inputs)
+        elif not self.
