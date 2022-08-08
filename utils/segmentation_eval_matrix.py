@@ -86,4 +86,10 @@ class SegmentationLosses(nn.CrossEntropyLoss):
             loss3 = self.bceloss(torch.sigmoid(se_pred), se_target)
             return loss1 + self.aux_weight * loss2 + self.se_weight * loss3
 
-    @s
+    @staticmethod
+    def _get_batch_label_vector(target, nclass):
+        # target is a 3D Variable BxHxW, output is 2D BxnClass
+        batch = target.size(0)
+        tvect = Variable(torch.zeros(batch, nclass))
+        for i in range(batch):
+  
