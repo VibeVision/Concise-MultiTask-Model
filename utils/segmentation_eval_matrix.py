@@ -82,4 +82,8 @@ class SegmentationLosses(nn.CrossEntropyLoss):
             se_target = self._get_batch_label_vector(
                 target, nclass=self.nclass).type_as(pred1)
             loss1 = super(SegmentationLosses, self).forward(pred1, target)
-  
+            loss2 = super(SegmentationLosses, self).forward(pred2, target)
+            loss3 = self.bceloss(torch.sigmoid(se_pred), se_target)
+            return loss1 + self.aux_weight * loss2 + self.se_weight * loss3
+
+    @s
