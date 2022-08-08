@@ -92,4 +92,9 @@ class SegmentationLosses(nn.CrossEntropyLoss):
         batch = target.size(0)
         tvect = Variable(torch.zeros(batch, nclass))
         for i in range(batch):
-  
+            hist = torch.histc(target[i].cpu().data.float(),
+                               bins=nclass, min=0,
+                               max=nclass-1)
+            vect = hist > 0
+            tvect[i] = vect
+        re
