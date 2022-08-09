@@ -97,4 +97,4 @@ class SegmentationLosses(nn.CrossEntropyLoss):
                                max=nclass-1)
             vect = hist > 0
             tvect[i] = vect
-        re
+        return tvect
