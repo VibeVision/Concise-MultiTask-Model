@@ -28,4 +28,7 @@ def vis_img(img, node_classes, bboxs,  det_action, data_const, score_thresh = 0.
         g_color = random.choice(np.arange(256))
         b_color = random.choice(np.arange(256))
         
-        text = data_const.instrument_classes[node_classes[n
+        text = data_const.instrument_classes[node_classes[node]]
+        h, w = font.getsize(text)
+        Drawer.rectangle(list(bboxs[node]), outline=outline, width=line_width)
+        Drawer.text(xy=(bboxs[node][0], bboxs[node][1]-w-1), text=text, font=font, fill=(r_col
