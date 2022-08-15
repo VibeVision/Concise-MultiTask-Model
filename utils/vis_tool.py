@@ -22,4 +22,10 @@ def vis_img(img, node_classes, bboxs,  det_action, data_const, score_thresh = 0.
     edge_num = len(det_action)
     tissue_num = len(np.where(node_classes == 1)[0])
     
-    for node in ra
+    for node in range(node_num):
+        
+        r_color = random.choice(np.arange(256))
+        g_color = random.choice(np.arange(256))
+        b_color = random.choice(np.arange(256))
+        
+        text = data_const.instrument_classes[node_classes[n
