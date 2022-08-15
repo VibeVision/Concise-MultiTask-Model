@@ -15,4 +15,11 @@ def vis_img(img, node_classes, bboxs,  det_action, data_const, score_thresh = 0.
     Drawer = ImageDraw.Draw(img)
     line_width = 3
     outline = '#FF0000'
-    font = ImageFont.truetype(font='/usr/share/fonts/truetype/f
+    font = ImageFont.truetype(font='/usr/share/fonts/truetype/freefont/FreeMono.ttf', size=25)
+    
+    im_w,im_h = img.size
+    node_num = len(node_classes)
+    edge_num = len(det_action)
+    tissue_num = len(np.where(node_classes == 1)[0])
+    
+    for node in ra
