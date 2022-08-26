@@ -43,4 +43,9 @@ def vis_img(img, node_classes, bboxs,  det_action, data_const, score_thresh = 0.
 #             print('det_action', det_action[edge_idx])
 #             print('action_idx',action_idx)
             
-            text = d
+            text = data_const.action_classes[action_idx]
+            r_color = random.choice(np.arange(256))
+            g_color = random.choice(np.arange(256))
+            b_color = random.choice(np.arange(256))
+        
+        
