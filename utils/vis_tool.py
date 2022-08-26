@@ -38,4 +38,9 @@ def vis_img(img, node_classes, bboxs,  det_action, data_const, score_thresh = 0.
     for tissue in range(tissue_num):
         for instrument in range(tissue+1, node_num):
             
-            #action_idx = np.where(det_action[edge_idx] > sco
+            #action_idx = np.where(det_action[edge_idx] > score_thresh)[0]
+            action_idx = np.argmax(det_action[edge_idx])
+#             print('det_action', det_action[edge_idx])
+#             print('action_idx',action_idx)
+            
+            text = d
