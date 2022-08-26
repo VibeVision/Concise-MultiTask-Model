@@ -31,4 +31,11 @@ def vis_img(img, node_classes, bboxs,  det_action, data_const, score_thresh = 0.
         text = data_const.instrument_classes[node_classes[node]]
         h, w = font.getsize(text)
         Drawer.rectangle(list(bboxs[node]), outline=outline, width=line_width)
-        Drawer.text(xy=(bboxs[node][0], bboxs[node][1]-w-1), text=text, font=font, fill=(r_col
+        Drawer.text(xy=(bboxs[node][0], bboxs[node][1]-w-1), text=text, font=font, fill=(r_color,g_color,b_color))
+  
+    edge_idx = 0
+    
+    for tissue in range(tissue_num):
+        for instrument in range(tissue+1, node_num):
+            
+            #action_idx = np.where(det_action[edge_idx] > sco
