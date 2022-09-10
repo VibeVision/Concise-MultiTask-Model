@@ -59,4 +59,9 @@ def vis_img(img, node_classes, bboxs,  det_action, data_const, score_thresh = 0.
             c1 = max(0,min(c1,im_w-1))
             r1 = int(0.5*y1_)+int(0.5*y2_)
             r1 = max(0,min(r1,im_h-1))
-            Drawer.line(((c0,r0),(c1,r1)), 
+            Drawer.line(((c0,r0),(c1,r1)), fill=(r_color,g_color,b_color), width=3)
+            Drawer.text(xy=(c1, r1), text=text, font=font, fill=(r_color,g_color,b_color))
+
+            edge_idx +=1
+
+    return img
