@@ -48,4 +48,10 @@ def vis_img(img, node_classes, bboxs,  det_action, data_const, score_thresh = 0.
             g_color = random.choice(np.arange(256))
             b_color = random.choice(np.arange(256))
         
-        
+            x1,y1,x2,y2 = bboxs[tissue]
+            x1_,y1_,x2_,y2_ = bboxs[instrument]
+            
+            c0 = int(0.5*x1)+int(0.5*x2)
+            c0 = max(0,min(c0,im_w-1))
+            r0 = int(0.5*y1)+int(0.5*y2)
+ 
