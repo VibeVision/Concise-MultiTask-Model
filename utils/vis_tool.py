@@ -54,4 +54,9 @@ def vis_img(img, node_classes, bboxs,  det_action, data_const, score_thresh = 0.
             c0 = int(0.5*x1)+int(0.5*x2)
             c0 = max(0,min(c0,im_w-1))
             r0 = int(0.5*y1)+int(0.5*y2)
- 
+            r0 = max(0,min(r0,im_h-1))
+            c1 = int(0.5*x1_)+int(0.5*x2_)
+            c1 = max(0,min(c1,im_w-1))
+            r1 = int(0.5*y1_)+int(0.5*y2_)
+            r1 = max(0,min(r1,im_h-1))
+            Drawer.line(((c0,r0),(c1,r1)), 
