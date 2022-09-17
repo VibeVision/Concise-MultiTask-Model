@@ -13,4 +13,11 @@ If you find our code or paper useful, please use the following citation:
 @article{seenivasan2022global,
   title={Global-Reasoned Multi-Task Learning Model for Surgical Scene Understanding},
   author={VibeVision's Team},
-  journal={IEEE Robotics and Automation Letters}
+  journal={IEEE Robotics and Automation Letters},
+  year={2022},
+  publisher={IEEE}
+}
+```
+---
+## Introduction
+This globally-reasoned multi-task model enables scene understanding and performs instrument segmentation and tool-tissue interaction detection. Using a seque
