@@ -8,4 +8,9 @@
 |:-------------------:|:-------------------:|:-------------------:|
 ICRA 2022, IEEE Robotics and Automation Letters (RA-L)
 </div>
-If you find our code or paper 
+If you find our code or paper useful, please use the following citation:
+```bibtex
+@article{seenivasan2022global,
+  title={Global-Reasoned Multi-Task Learning Model for Surgical Scene Understanding},
+  author={VibeVision's Team},
+  journal={IEEE Robotics and Automation Letters}
