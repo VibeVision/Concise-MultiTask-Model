@@ -22,4 +22,8 @@ If you find our code or paper useful, please use the following citation:
 ## Introduction
 This globally-reasoned multi-task model enables scene understanding and performs instrument segmentation and tool-tissue interaction detection. Using a sequential optimization technique, the proposed multi-task model outperforms other state-of-the-art single-task models on the MICCAI endoscopic vision challenge 2018 dataset.
 ## How to Use
- First, install the prerequisites mentioned. Then, follow t
+ First, install the prerequisites mentioned. Then, follow the steps for dataset usage and model training and evaluation. Our setup section provides environment files for easy installation using conda.
+---
+## Acknowledgement
+Several parts of our code are adopted and modified from :
+1. Visual-Semantic G
