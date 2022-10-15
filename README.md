@@ -26,4 +26,8 @@ This globally-reasoned multi-task model enables scene understanding and performs
 ---
 ## Acknowledgement
 Several parts of our code are adopted and modified from :
-1. Visual-Semantic G
+1. Visual-Semantic Graph Attention Network for Human-Object Interaction Detecion
+2. Graph-Based Global Reasoning Networks
+---
+## Contact
+For any queries, please contact VibeVision's Team through their GitHub profiles.
